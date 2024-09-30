@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reformas Palma de Mallorca | [Tu Empresa]</title>
+    <meta name="description" content="Servicios de reformas integrales en Palma de Mallorca. Transformamos tu hogar con calidad y garantía.">
+    <meta name="keywords" content="reformas, Palma de Mallorca, renovación, construcción, diseño de interiores">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css"/>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="assets/hero-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Transformamos tu Hogar en Palma de Mallorca</h1>
+            <p>Servicios de reformas integrales con calidad y garantía.</p>
+            <a href="#contact" class="btn">Solicita una Consulta</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Con más de [X] años de experiencia en el sector de reformas en Palma de Mallorca, nuestro equipo de profesionales se dedica a transformar tus espacios con atención al detalle y excelencia en el servicio.</p>
+                    <p>Nuestro compromiso es ofrecer soluciones personalizadas que se ajusten a tus necesidades y presupuesto, garantizando siempre la máxima calidad.</p>
+                    <a href="#contact" class="btn">Contáctanos</a>
+                </div>
+                <div class="about-image">
+                    <img src="assets/about.jpg" alt="Sobre Nosotros">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-hammer service-icon"></i>
+                    <h3>Reformas Integrales</h3>
+                    <p>Transformamos completamente tu espacio con acabados de alta calidad.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-paint-roller service-icon"></i>
+                    <h3>Pintura y Decoración</h3>
+                    <p>Renovamos y decoramos tus espacios con los mejores materiales y técnicas.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-plug service-icon"></i>
+                    <h3>Electricidad y Fontanería</h3>
+                    <p>Instalaciones eléctricas y de fontanería seguras y eficientes.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Carpintería</h3>
+                    <p>Muebles a medida y soluciones de carpintería de alta calidad.</p>
+                </div>
+                <!-- Agrega más servicios según sea necesario -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Proyectos Recientes</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="cocina">Cocinas</button>
+                <button class="filter-btn" data-filter="baño">Baños</button>
+                <button class="filter-btn" data-filter="vivienda">Viviendas</button>
+                <!-- Agrega más filtros según los servicios -->
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="cocina">
+                    <img src="assets/portfolio1.jpg" alt="Reforma de Cocina">
+                    <div class="portfolio-overlay">
+                        <h3>Reforma de Cocina</h3>
+                        <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="baño">
+                    <img src="assets/portfolio2.jpg" alt="Renovación de Baño">
+                    <div class="portfolio-overlay">
+                        <h3>Renovación de Baño</h3>
+                        <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="vivienda">
+                    <img src="assets/portfolio3.jpg" alt="Ampliación de Vivienda">
+                    <div class="portfolio-overlay">
+                        <h3>Ampliación de Vivienda</h3>
+                        <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+                    </div>
+                </div>
+                <!-- Agrega más proyectos según sea necesario -->
+            </div>
+        </div>
+
+        <!-- Portfolio Modal -->
+        <div id="portfolioModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="">
+                <h3 id="modalTitle">Título del Proyecto</h3>
+                <p id="modalDescription">Descripción detallada del proyecto...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Testimonios</h2>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial">
+                        <p>"[Tu Empresa] transformó nuestra casa de manera increíble. Profesionalismo y calidad en cada detalle."</p>
+                        <h4>Juan Pérez</h4>
+                    </div>
+                    <div class="swiper-slide testimonial">
+                        <p>"Excelente servicio y atención personalizada. Recomiendo altamente sus servicios de reformas."</p>
+                        <h4>María López</h4>
+                    </div>
+                    <div class="swiper-slide testimonial">
+                        <p>"El equipo de [Tu Empresa] superó nuestras expectativas. La reforma se realizó a tiempo y con gran calidad."</p>
+                        <h4>Carlos García</h4>
+                    </div>
+                    <!-- Agrega más testimonios según sea necesario -->
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nombre<span>*</span></label>
+                        <input type="text" id="name" name="name" required aria-required="true" placeholder="Tu Nombre">
+                        <small class="error-message" id="nameError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico<span>*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true" placeholder="tu@correo.com">
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Tu Teléfono">
+                        <small class="error-message" id="phoneError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje<span>*</span></label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tu Mensaje"></textarea>
+                        <small class="error-message" id="messageError"></small>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Palma de Mallorca, Islas Baleares</p>
+                    <p><i class="fas fa-phone-alt"></i> +34 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> info@tuempresa.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <!-- Agrega más redes sociales según sea necesario -->
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 [Tu Empresa]. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#home">Inicio</a>
+                <a href="#about">Nosotros</a>
+                <a href="#services">Servicios</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Swiper.js -->
+    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
