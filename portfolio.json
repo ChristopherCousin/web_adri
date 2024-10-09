@@ -4,21 +4,13 @@
         "category": "cocina",
         "image": "assets/portfolio/cocina1.jpg",
         "afterImage": "assets/portfolio/cocina1_after.jpg",
-        "description": "Reforma integral de cocina con acabados modernos y funcionales."
+        "description": "Transformamos una cocina tradicional en un espacio moderno y funcional."
     },
     {
-        "title": "Baño Minimalista",
+        "title": "Reforma de Baño Minimalista",
         "category": "baño",
         "image": "assets/portfolio/baño1.jpg",
         "afterImage": "assets/portfolio/baño1_after.jpg",
-        "description": "Diseño y reforma de baño minimalista con materiales de alta calidad."
-    },
-    {
-        "title": "Reforma de Vivienda Completa",
-        "category": "vivienda",
-        "image": "assets/portfolio/vivienda1.jpg",
-        "afterImage": "assets/portfolio/vivienda1_after.jpg",
-        "description": "Reforma integral de vivienda, optimizando espacios y funcionalidad."
+        "description": "Creación de un baño minimalista con acabados de alta calidad."
     }
-    // Puedes agregar más proyectos según tus necesidades
 ]
