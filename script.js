@@ -10,8 +10,9 @@ const navLinks = document.getElementById('navLinks');
 const navLinksItems = navLinks.querySelectorAll('a');
 
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    const isActive = navLinks.classList.toggle('active');
     hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive);
 });
 
 // Close navbar on link click (mobile)
@@ -20,6 +21,7 @@ navLinksItems.forEach(link => {
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         }
     });
 });
@@ -95,7 +97,12 @@ const closeModal = document.querySelector('.close');
 
 // Cargar Portafolio desde JSON
 fetch('portfolio.json')
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
         portfolioData = data;
         renderPortfolio(portfolioData);
@@ -104,6 +111,7 @@ fetch('portfolio.json')
 
 // Función para renderizar el portafolio
 function renderPortfolio(projects) {
+    portfolioGrid.innerHTML = ''; // Limpiar contenido previo
     projects.forEach(project => {
         const portfolioItem = document.createElement('div');
         portfolioItem.classList.add('portfolio-item');
@@ -155,20 +163,27 @@ portfolioGrid.addEventListener('click', (e) => {
 
         if (project) {
             modalImage.src = project.afterImage || imgSrc;
+            modalImage.alt = project.title;
             modalTitle.innerText = project.title;
             modalDescription.innerText = project.description || 'Descripción del proyecto.';
             portfolioModal.style.display = 'block';
+            portfolioModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
         }
     }
 });
 
 closeModal.addEventListener('click', () => {
     portfolioModal.style.display = 'none';
+    portfolioModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto'; // Restaura el scroll
 });
 
 window.addEventListener('click', (e) => {
     if (e.target == portfolioModal) {
         portfolioModal.style.display = 'none';
+        portfolioModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto'; // Restaura el scroll
     }
 });
 

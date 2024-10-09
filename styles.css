@@ -20,7 +20,7 @@ body {
     font-family: var(--font-family-secondary);
     color: var(--dark-color);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita desbordamientos horizontales */
 }
 
 a {
@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
     list-style: none;
     display: flex;
     align-items: center;
+    transition: left 0.3s ease;
 }
 
 .navbar .nav-links li {
@@ -127,6 +128,10 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1100; /* Asegura que esté por encima del menú */
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .hamburger .bar {
@@ -135,6 +140,19 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--light-color);
     margin: 4px 0;
     transition: all 0.3s ease;
+}
+
+/* Animación para el hamburger activo (transformar en 'X') */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Responsive Navbar */
@@ -215,7 +233,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
 }
 
-/* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 2rem;
@@ -544,6 +561,11 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--secondary-color);
+}
+
 /* Contact Section */
 .contact {
     padding: 100px 0;
@@ -720,10 +742,76 @@ footer {
     .hamburger {
         display: flex;
     }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
     .services-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* Ajustes para que el video se vea correctamente en móviles */
+    .hero-video {
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .portfolio-filter {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        margin: 10px 0;
+    }
+}
+
+/* Evitar desbordamientos en secciones */
+section {
+    width: 100%;
+}
+
+/* Añadir z-index al modal para evitar que quede debajo de otros elementos */
+.modal {
+    z-index: 2000;
+}
+
+/* Asegurar que no haya elementos que excedan el ancho en móviles */
+@media (max-width: 768px) {
+    .services-grid,
+    .portfolio-grid,
+    .testimonials .swiper-container,
+    .contact-content {
+        padding: 0 10px;
+    }
+
+    /* Ajustes adicionales si es necesario */
 }
