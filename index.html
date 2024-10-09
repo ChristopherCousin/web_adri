@@ -58,15 +58,31 @@
         <div class="container hero-content">
             <h1>Reformas Integrales en Palma de Mallorca</h1>
             <p>Especializados en alicatados, embaldosados, pintura y más. Disponibilidad 24 horas.</p>
-            <a href="#contact" class="btn">Pide tu presupuesto sin compromiso</a>
+            <a href="#" class="btn" id="mainCTA">Pide tu presupuesto sin compromiso</a>
         </div>
     </section>
 
-    <!-- Segunda CTA -->
+    <!-- Modal de Contacto -->
+    <div id="contactModal" class="modal" aria-hidden="true">
+        <span class="close" aria-label="Cerrar Modal">&times;</span>
+        <div class="modal-content">
+            <h3>Contáctanos</h3>
+            <p>Elige la forma que prefieras para comunicarte con nosotros:</p>
+            <div class="contact-options">
+                <a href="tel:+34635903415" class="btn"><i class="fas fa-phone-alt"></i> Llámanos</a>
+                <a href="https://wa.me/34635903415" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Formulario de Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Secundaria -->
     <section class="cta-secondary">
         <div class="container">
             <h2>¡Garantizamos los mejores precios del mercado con la máxima calidad!</h2>
-            <a href="#contact" class="btn">Pide tu presupuesto sin compromiso</a>
+            <div class="cta-buttons">
+                <a href="#" class="btn" id="secondaryCTA">Pide tu presupuesto sin compromiso</a>
+            </div>
         </div>
     </section>
 
@@ -221,11 +237,11 @@
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Palma de Mallorca, Islas Baleares</p>
-                    <p><i class="fas fa-phone-alt"></i> +34 635 90 34 15</p>
-                    <p><i class="fas fa-envelope"></i> Loganinvestsl@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+34635903415">+34 635 90 34 15</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:Loganinvestsl@gmail.com">Loganinvestsl@gmail.com</a></p>
                     <p><i class="fas fa-clock"></i> Disponibilidad: 24 horas</p>
-                    <div class="social-links">
-                        <!-- Agrega más redes sociales si lo deseas -->
+                    <div class="contact-buttons">
+                        <a href="#" class="btn" id="contactInfoCTA">Pide tu presupuesto sin compromiso</a>
                     </div>
                 </div>
             </div>

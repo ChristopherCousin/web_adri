@@ -260,23 +260,78 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.btn {
-    background-color: var(--secondary-color);
-    padding: 12px 30px;
-    color: var(--light-color);
-    border-radius: 50px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+/* Botones en el Hero */
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-.btn:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-5px);
+.btn-whatsapp {
+    background-color: #25D366;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.btn-whatsapp:hover {
+    background-color: #1DA851;
+}
+
+/* Modal de Contacto */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.8);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background: var(--light-color);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--dark-color);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    animation: fadeInModal 0.5s ease;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-options .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.contact-options .btn i {
+    margin-right: 10px;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1DA851;
 }
 
 /* CTA Secundaria */
@@ -291,12 +346,22 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
 }
 
-.cta-secondary .btn {
-    background-color: var(--secondary-color);
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-.cta-secondary .btn:hover {
-    background-color: var(--accent-color);
+.cta-buttons .btn {
+    margin: 0;
+}
+
+.cta-secondary .btn-whatsapp {
+    background-color: #25D366;
+}
+
+.cta-secondary .btn-whatsapp:hover {
+    background-color: #1DA851;
 }
 
 /* About Section */
@@ -331,8 +396,11 @@ h1, h2, h3, h4, h5, h6 {
 .about-image img {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    height: auto;
 }
 
+/* Animaciones */
 @keyframes slideInLeft {
     from { opacity: 0; transform: translateX(-50px); }
     to { opacity: 1; transform: translateX(0); }
@@ -448,14 +516,23 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.05);
 }
 
-.portfolio-item img {
+.portfolio-image {
     width: 100%;
-    height: 200px; /* Ajusta la altura según tus necesidades */
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+}
+
+.portfolio-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.portfolio-item:hover img {
+.portfolio-item:hover .portfolio-image img {
     transform: scale(1.1);
 }
 
@@ -497,37 +574,18 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--accent-color);
 }
 
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgba(0,0,0,0.8);
-    padding-top: 60px;
+/* Modal de Portfolio */
+.portfolioModal {
+    /* Ya definido en #portfolioModal */
 }
 
-.modal-content {
-    background: var(--light-color);
-    margin: auto;
-    padding: 20px;
-    border: 1px solid var(--dark-color);
-    width: 90%;
-    max-width: 800px;
-    border-radius: 10px;
-    position: relative;
-    animation: fadeInModal 0.5s ease;
+/* Animaciones del Modal */
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-.modal-content h3 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
+/* Comparación de Imágenes */
 .image-comparison {
     position: relative;
     width: 100%;
@@ -543,7 +601,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: auto;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease, clip-path 0.5s ease;
 }
 
 .image-comparison #beforeImage {
@@ -566,35 +624,6 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--secondary-color);
     cursor: ew-resize;
     z-index: 3;
-}
-
-.modal-content p {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: var(--dark-color);
-    text-align: center;
-}
-
-.close {
-    color: var(--dark-color);
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close:hover,
-.close:focus {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-@keyframes fadeInModal {
-    from { opacity: 0; transform: scale(0.7); }
-    to { opacity: 1; transform: scale(1); }
 }
 
 /* Testimonios Section */
@@ -627,7 +656,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--secondary-color);
 }
 
-/* Swiper Pagination and Navigation */
+/* Swiper Pagination and Navigation (Eliminados si ya no se usan)
 .swiper-pagination-bullet {
     background: var(--secondary-color);
     opacity: 1;
@@ -637,6 +666,7 @@ h1, h2, h3, h4, h5, h6 {
 .swiper-button-prev {
     color: var(--secondary-color);
 }
+*/
 
 /* Contact Section */
 .contact {
@@ -743,14 +773,31 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--secondary-color);
 }
 
-.social-links a {
+.contact-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.contact-buttons .btn {
+    flex: 1;
+}
+
+.contact-buttons .btn-whatsapp {
+    background-color: #25D366;
+}
+
+.contact-buttons .btn-whatsapp:hover {
+    background-color: #1DA851;
+}
+
+.contact-info p a {
     color: var(--dark-color);
-    margin-right: 15px;
-    font-size: 1.5rem;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.social-links a:hover {
+.contact-info p a:hover {
     color: var(--secondary-color);
 }
 
@@ -777,10 +824,15 @@ footer {
     color: var(--secondary-color);
 }
 
-/* Animations */
+/* Animaciones */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Responsive Styles */
@@ -879,8 +931,12 @@ footer {
     }
 
     /* Ajustar altura de las imágenes del portafolio */
-    .portfolio-item img {
-        height: 150px;
+    .portfolio-image {
+        padding-top: 75%; /* Cambiar aspect ratio para móviles */
+    }
+
+    .portfolio-image img {
+        height: 100%;
     }
 }
 
@@ -898,60 +954,4 @@ section {
 .portfolio-item img {
     max-width: 100%;
     height: auto;
-}
-
-/* Estilos para la Comparación de Imágenes */
-.image-comparison {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    overflow: hidden;
-    margin: 0 auto 20px auto;
-}
-
-.image-comparison img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    transition: width 0.5s ease;
-}
-
-.image-comparison #beforeImage {
-    width: 50%;
-    z-index: 1;
-}
-
-.image-comparison #afterImage {
-    width: 100%;
-    z-index: 2;
-    clip-path: inset(0 0 0 50%);
-}
-
-.slider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 3px;
-    height: 100%;
-    background: var(--secondary-color);
-    cursor: ew-resize;
-    z-index: 3;
-}
-
-/* Mejorar el modal en móviles */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-    }
-
-    .image-comparison {
-        max-width: 100%;
-    }
-
-    .portfolio-item img {
-        height: 150px;
-    }
 }

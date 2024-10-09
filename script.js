@@ -56,6 +56,11 @@ const smoothLinks = document.querySelectorAll('a[href^="#"]');
 
 smoothLinks.forEach(link => {
     link.addEventListener('click', function(e) {
+        // Ignorar enlaces que abren modales
+        if (link.id === 'mainCTA' || link.id === 'secondaryCTA' || link.id === 'contactInfoCTA') {
+            return;
+        }
+
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -67,21 +72,14 @@ smoothLinks.forEach(link => {
     });
 });
 
-// Swiper.js Initialization
+// Swiper.js Initialization for Testimonials (Sin paginación ni navegación)
 const swiper = new Swiper('.swiper-container', {
     loop: true,
     autoplay: {
         delay: 7000,
         disableOnInteraction: false,
     },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+    // Eliminados los controles de paginación y navegación
 });
 
 // Portfolio Filtering and Modal
@@ -94,7 +92,7 @@ const modalImageBefore = document.getElementById('beforeImage');
 const modalImageAfter = document.getElementById('afterImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalDescription = document.getElementById('modalDescription');
-const closeModal = document.querySelector('.close');
+const closeModal = document.querySelector('.portfolio .close');
 
 // Cargar Portafolio desde JSON
 fetch('portfolio.json')
@@ -119,7 +117,9 @@ function renderPortfolio(projects) {
         portfolioItem.setAttribute('data-category', project.category);
 
         portfolioItem.innerHTML = `
-            <img src="${project.image}" alt="${project.title}">
+            <div class="portfolio-image">
+                <img src="${project.image}" alt="${project.title}">
+            </div>
             <div class="portfolio-overlay">
                 <h3>${project.title}</h3>
                 <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
@@ -226,7 +226,7 @@ portfolioGrid.addEventListener('click', (e) => {
     }
 });
 
-// Cerrar Modal
+// Cerrar Modal de Portfolio
 closeModal.addEventListener('click', () => {
     portfolioModal.style.display = 'none';
     portfolioModal.setAttribute('aria-hidden', 'true');
@@ -240,6 +240,38 @@ window.addEventListener('click', (e) => {
         portfolioModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = 'auto'; // Restaura el scroll
     }
+
+    // Cerrar Modal de Contacto si se hace clic fuera
+    if (e.target == contactModal) {
+        contactModal.style.display = 'none';
+        contactModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto'; // Restaura el scroll
+    }
+});
+
+// Modal de Contacto
+const mainCTA = document.getElementById('mainCTA');
+const secondaryCTA = document.getElementById('secondaryCTA');
+const contactInfoCTA = document.getElementById('contactInfoCTA');
+const contactModal = document.getElementById('contactModal');
+const closeContactModal = contactModal.querySelector('.close');
+
+function openContactModal(e) {
+    e.preventDefault();
+    contactModal.style.display = 'block';
+    contactModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
+}
+
+mainCTA.addEventListener('click', openContactModal);
+secondaryCTA.addEventListener('click', openContactModal);
+contactInfoCTA.addEventListener('click', openContactModal);
+
+// Cerrar Modal de Contacto
+closeContactModal.addEventListener('click', () => {
+    contactModal.style.display = 'none';
+    contactModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto'; // Restaura el scroll
 });
 
 // Contact Form Validation and Submission
@@ -296,5 +328,11 @@ contactForm.addEventListener('submit', function(e){
         // Lógica para enviar el formulario
         alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
         contactForm.reset();
+        // Cerrar el modal de contacto si está abierto
+        if (contactModal.style.display === 'block') {
+            contactModal.style.display = 'none';
+            contactModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto'; // Restaura el scroll
+        }
     }
 });
