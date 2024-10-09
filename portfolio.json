@@ -9,10 +9,10 @@
     },
     {
         "title": "Reforma de Baño Minimalista",
-        "category": "baño",
-        "image": "assets/portfolio/banyo1.jpg",
-        "beforeImage": "assets/portfolio/banyo1.jpg",
-        "afterImage": "assets/portfolio/banyo1_after.jpg",
+        "category": "bano",
+        "image": "assets/portfolio/bano1.jpg",
+        "beforeImage": "assets/portfolio/bano1_after.jpg",
+        "afterImage": "assets/portfolio/bano1_after.jpg",
         "description": "Creación de un baño minimalista con acabados de alta calidad."
     },
     {

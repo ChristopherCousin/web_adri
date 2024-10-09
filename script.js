@@ -210,16 +210,24 @@ portfolioGrid.addEventListener('click', (e) => {
         const project = portfolioData.find(p => p.title === title);
 
         if (project) {
+            console.log('Proyecto seleccionado:', project); // Depuración
+
             // Establecer imágenes
             modalImageBefore.src = project.beforeImage || project.image;
             modalImageAfter.src = project.afterImage || project.image;
+
+            console.log('Imagen Antes:', modalImageBefore.src); // Depuración
+            console.log('Imagen Después:', modalImageAfter.src); // Depuración
+
             // Establecer título y descripción
             modalTitle.innerText = project.title;
             modalDescription.innerText = project.description || 'Descripción del proyecto.';
+
             // Mostrar el modal
             portfolioModal.style.display = 'block';
             portfolioModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
+
             // Inicializar el slider
             setTimeout(initImageComparison, 100); // Delay para asegurar que las imágenes estén cargadas
         }

@@ -619,7 +619,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 3px;
+    width: 5px; /* Aumentado para facilitar el toque en móviles */
     height: 100%;
     background: var(--secondary-color);
     cursor: ew-resize;
