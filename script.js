@@ -205,7 +205,6 @@ function initImageComparison() {
 portfolioGrid.addEventListener('click', (e) => {
     const portfolioItem = e.target.closest('.portfolio-item');
     if (portfolioItem) {
-        const imgSrc = portfolioItem.querySelector('img').src;
         const title = portfolioItem.querySelector('h3').innerText;
 
         const project = portfolioData.find(p => p.title === title);

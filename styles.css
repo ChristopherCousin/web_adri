@@ -279,6 +279,26 @@ h1, h2, h3, h4, h5, h6 {
     to { opacity: 1; }
 }
 
+/* CTA Secundaria */
+.cta-secondary {
+    padding: 60px 0;
+    background-color: var(--light-color);
+    text-align: center;
+}
+
+.cta-secondary h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.cta-secondary .btn {
+    background-color: var(--secondary-color);
+}
+
+.cta-secondary .btn:hover {
+    background-color: var(--accent-color);
+}
+
 /* About Section */
 .about {
     padding: 100px 0;
