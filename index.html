@@ -143,12 +143,16 @@
             </div>
         </div>
 
-        <!-- Modal de Portfolio -->
+        <!-- Modal de Portfolio Mejorado -->
         <div id="portfolioModal" class="modal" aria-hidden="true">
             <span class="close" aria-label="Cerrar Modal">&times;</span>
             <div class="modal-content">
-                <img id="modalImage" src="" alt="">
                 <h3 id="modalTitle">Título del Proyecto</h3>
+                <div class="image-comparison">
+                    <img id="beforeImage" src="" alt="Antes">
+                    <img id="afterImage" src="" alt="Después">
+                    <div class="slider"></div>
+                </div>
                 <p id="modalDescription">Descripción detallada del proyecto...</p>
             </div>
         </div>
@@ -174,6 +178,10 @@
                         <h4>Carmen Gómez</h4>
                     </div>
                 </div>
+                <!-- Añadido para mostrar los controles de navegación y paginación -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>

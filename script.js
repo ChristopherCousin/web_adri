@@ -90,7 +90,8 @@ let portfolioData = [];
 const filterButtons = document.querySelectorAll('.filter-btn');
 const portfolioGrid = document.getElementById('portfolioGrid');
 const portfolioModal = document.getElementById('portfolioModal');
-const modalImage = document.getElementById('modalImage');
+const modalImageBefore = document.getElementById('beforeImage');
+const modalImageAfter = document.getElementById('afterImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalDescription = document.getElementById('modalDescription');
 const closeModal = document.querySelector('.close');
@@ -152,7 +153,55 @@ filterButtons.forEach(btn => {
     });
 });
 
-// Portfolio Modal
+// Funcionalidad del Slider de Comparación
+function initImageComparison() {
+    const slider = document.querySelector('.slider');
+    const beforeImage = document.getElementById('beforeImage');
+    const afterImage = document.getElementById('afterImage');
+    const imageComparison = document.querySelector('.image-comparison');
+    let isDragging = false;
+
+    const setSliderPosition = (clientX) => {
+        const rect = imageComparison.getBoundingClientRect();
+        let offsetX = clientX - rect.left;
+        if (offsetX < 0) offsetX = 0;
+        if (offsetX > rect.width) offsetX = rect.width;
+        const percent = (offsetX / rect.width) * 100;
+        beforeImage.style.width = `${percent}%`;
+        afterImage.style.clipPath = `inset(0 0 0 ${100 - percent}%)`;
+        slider.style.left = `${percent}%`;
+    };
+
+    slider.addEventListener('mousedown', () => {
+        isDragging = true;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        setSliderPosition(e.clientX);
+    });
+
+    // Para dispositivos táctiles
+    slider.addEventListener('touchstart', () => {
+        isDragging = true;
+    });
+
+    document.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        setSliderPosition(touch.clientX);
+    });
+}
+
+// Portfolio Modal Mejorado
 portfolioGrid.addEventListener('click', (e) => {
     const portfolioItem = e.target.closest('.portfolio-item');
     if (portfolioItem) {
@@ -162,23 +211,30 @@ portfolioGrid.addEventListener('click', (e) => {
         const project = portfolioData.find(p => p.title === title);
 
         if (project) {
-            modalImage.src = project.afterImage || imgSrc;
-            modalImage.alt = project.title;
+            // Establecer imágenes
+            modalImageBefore.src = project.beforeImage || project.image;
+            modalImageAfter.src = project.afterImage || project.image;
+            // Establecer título y descripción
             modalTitle.innerText = project.title;
             modalDescription.innerText = project.description || 'Descripción del proyecto.';
+            // Mostrar el modal
             portfolioModal.style.display = 'block';
             portfolioModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
+            // Inicializar el slider
+            setTimeout(initImageComparison, 100); // Delay para asegurar que las imágenes estén cargadas
         }
     }
 });
 
+// Cerrar Modal
 closeModal.addEventListener('click', () => {
     portfolioModal.style.display = 'none';
     portfolioModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = 'auto'; // Restaura el scroll
 });
 
+// Cerrar Modal al hacer clic fuera del contenido
 window.addEventListener('click', (e) => {
     if (e.target == portfolioModal) {
         portfolioModal.style.display = 'none';

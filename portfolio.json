@@ -3,6 +3,7 @@
         "title": "Reforma de Cocina Moderna",
         "category": "cocina",
         "image": "assets/portfolio/cocina1.jpg",
+        "beforeImage": "assets/portfolio/cocina1_before.jpg",
         "afterImage": "assets/portfolio/cocina1_after.jpg",
         "description": "Transformamos una cocina tradicional en un espacio moderno y funcional."
     },
@@ -10,7 +11,16 @@
         "title": "Reforma de Baño Minimalista",
         "category": "baño",
         "image": "assets/portfolio/baño1.jpg",
+        "beforeImage": "assets/portfolio/baño1_before.jpg",
         "afterImage": "assets/portfolio/baño1_after.jpg",
         "description": "Creación de un baño minimalista con acabados de alta calidad."
+    },
+    {
+        "title": "Reforma de Vivienda Completa",
+        "category": "vivienda",
+        "image": "assets/portfolio/vivienda1.jpg",
+        "beforeImage": "assets/portfolio/vivienda1_before.jpg",
+        "afterImage": "assets/portfolio/vivienda1_after.jpg",
+        "description": "Reforma integral de una vivienda para optimizar espacios y mejorar la estética."
     }
 ]
