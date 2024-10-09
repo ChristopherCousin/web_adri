@@ -544,16 +544,6 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-    color: var(--secondary-color);
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    color: var(--accent-color);
-}
-
 /* Contact Section */
 .contact {
     padding: 100px 0;
