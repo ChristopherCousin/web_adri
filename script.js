@@ -1,3 +1,6 @@
+// Variables globales
+let modalSwiper;
+
 // Preloader
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
@@ -201,7 +204,6 @@ function initImageComparison() {
     });
 }
 
-// Portfolio Modal Mejorado
 portfolioGrid.addEventListener('click', (e) => {
     const portfolioItem = e.target.closest('.portfolio-item');
     if (portfolioItem) {
@@ -210,35 +212,74 @@ portfolioGrid.addEventListener('click', (e) => {
         const project = portfolioData.find(p => p.title === title);
 
         if (project) {
-            console.log('Proyecto seleccionado:', project); // Depuración
-
-            // Establecer imágenes
-            modalImageBefore.src = project.beforeImage || project.image;
-            modalImageAfter.src = project.afterImage || project.image;
-
-            console.log('Imagen Antes:', modalImageBefore.src); // Depuración
-            console.log('Imagen Después:', modalImageAfter.src); // Depuración
-
             // Establecer título y descripción
             modalTitle.innerText = project.title;
             modalDescription.innerText = project.description || 'Descripción del proyecto.';
+
+            // Configurar las imágenes en Swiper
+            const modalSwiperWrapper = document.getElementById('modalSwiperWrapper');
+            modalSwiperWrapper.innerHTML = ''; // Limpiar diapositivas anteriores
+
+            // Agregar diapositivas para las imágenes
+            if (project.beforeImage) {
+                const slideBefore = document.createElement('div');
+                slideBefore.classList.add('swiper-slide');
+                slideBefore.innerHTML = `<img src="${project.beforeImage}" alt="Antes">`;
+                modalSwiperWrapper.appendChild(slideBefore);
+            }
+
+            if (project.afterImage) {
+                const slideAfter = document.createElement('div');
+                slideAfter.classList.add('swiper-slide');
+                slideAfter.innerHTML = `<img src="${project.afterImage}" alt="Después">`;
+                modalSwiperWrapper.appendChild(slideAfter);
+            }
+
+            // Si el proyecto tiene imágenes adicionales, agregarlas
+            if (project.additionalImages && Array.isArray(project.additionalImages)) {
+                project.additionalImages.forEach(imageUrl => {
+                    const slide = document.createElement('div');
+                    slide.classList.add('swiper-slide');
+                    slide.innerHTML = `<img src="${imageUrl}" alt="Imagen">`;
+                    modalSwiperWrapper.appendChild(slide);
+                });
+            }
 
             // Mostrar el modal
             portfolioModal.style.display = 'block';
             portfolioModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
 
-            // Inicializar el slider
-            setTimeout(initImageComparison, 100); // Delay para asegurar que las imágenes estén cargadas
+            // Inicializar Swiper
+            if (modalSwiper) {
+                modalSwiper.destroy(); // Destruir instancia anterior si existe
+            }
+            modalSwiper = new Swiper('.portfolio-swiper', {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
         }
     }
 });
 
-// Cerrar Modal de Portfolio
+// Cerrar Modal de Portfolio (asegúrate de mantener este código)
 closeModal.addEventListener('click', () => {
     portfolioModal.style.display = 'none';
     portfolioModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = 'auto'; // Restaura el scroll
+
+    // Destruir el Swiper para evitar conflictos
+    if (modalSwiper) {
+        modalSwiper.destroy();
+        modalSwiper = null;
+    }
 });
 
 // Cerrar Modal al hacer clic fuera del contenido
