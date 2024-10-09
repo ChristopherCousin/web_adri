@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Reforma de Cocina Moderna",
+        "category": "cocina",
+        "image": "assets/portfolio1.jpg",
+        "beforeImage": "assets/portfolio1-before.jpg",
+        "afterImage": "assets/portfolio1-after.jpg",
+        "description": "Proyecto de reforma de cocina moderna con acabados de alta calidad y diseño funcional."
+    },
+    {
+        "title": "Renovación de Baño Elegante",
+        "category": "baño",
+        "image": "assets/portfolio2.jpg",
+        "beforeImage": "assets/portfolio2-before.jpg",
+        "afterImage": "assets/portfolio2-after.jpg",
+        "description": "Renovación completa de baño con elementos elegantes y materiales de primera."
+    },
+    {
+        "title": "Reforma Integral de Vivienda",
+        "category": "vivienda",
+        "image": "assets/portfolio3.jpg",
+        "beforeImage": "assets/portfolio3-before.jpg",
+        "afterImage": "assets/portfolio3-after.jpg",
+        "description": "Reforma integral de vivienda, optimizando espacios y mejorando la estética general."
+    }
+    // Agrega más proyectos aquí
+]

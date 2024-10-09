@@ -64,11 +64,43 @@ smoothLinks.forEach(link => {
     });
 });
 
-
 // Portfolio Filtering
 const filterButtons = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
+const portfolioGrid = document.getElementById('portfolioGrid');
+const portfolioModal = document.getElementById('portfolioModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const closeModal = document.querySelector('.close');
 
+// Cargar Portafolio desde JSON
+fetch('portfolio.json')
+    .then(response => response.json())
+    .then(data => {
+        renderPortfolio(data);
+    })
+    .catch(error => console.error('Error cargando el portafolio:', error));
+
+// Función para renderizar el portafolio
+function renderPortfolio(projects) {
+    projects.forEach(project => {
+        const portfolioItem = document.createElement('div');
+        portfolioItem.classList.add('portfolio-item');
+        portfolioItem.setAttribute('data-category', project.category);
+
+        portfolioItem.innerHTML = `
+            <img src="${project.image}" alt="${project.title}">
+            <div class="portfolio-overlay">
+                <h3>${project.title}</h3>
+                <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+        `;
+
+        portfolioGrid.appendChild(portfolioItem);
+    });
+}
+
+// Filtrado de Portafolio
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         // Remove active class from all buttons
@@ -77,10 +109,12 @@ filterButtons.forEach(btn => {
         btn.classList.add('active');
 
         const filter = btn.getAttribute('data-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         portfolioItems.forEach(item => {
             if (filter === 'all' || item.getAttribute('data-category') === filter) {
                 item.style.display = 'block';
+                // Opcional: agregar animaciones
                 item.classList.add('animate__animated', 'animate__fadeIn');
             } else {
                 item.style.display = 'none';
@@ -90,47 +124,31 @@ filterButtons.forEach(btn => {
 });
 
 // Portfolio Modal
-const portfolioGrid = document.querySelector('.portfolio-grid');
-const modal = document.getElementById('portfolioModal');
-const modalImage = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
-const closeModal = document.querySelector('.close');
-
 portfolioGrid.addEventListener('click', (e) => {
     const portfolioItem = e.target.closest('.portfolio-item');
     if (portfolioItem) {
         const imgSrc = portfolioItem.querySelector('img').src;
         const title = portfolioItem.querySelector('h3').innerText;
-        // Aquí puedes agregar una descripción dinámica según el proyecto
-        let description = '';
-        switch(title) {
-            case 'Reforma de Cocina':
-                description = 'Descripción detallada del proyecto de reforma de cocina...';
-                break;
-            case 'Renovación de Baño':
-                description = 'Descripción detallada del proyecto de renovación de baño...';
-                break;
-            case 'Ampliación de Vivienda':
-                description = 'Descripción detallada del proyecto de ampliación de vivienda...';
-                break;
-            default:
-                description = 'Descripción del proyecto...';
+        const projects = JSON.parse(localStorage.getItem('portfolioData')) || [];
+
+        const project = projects.find(p => p.title === title);
+
+        if (project) {
+            modalImage.src = project.afterImage || imgSrc;
+            modalTitle.innerText = project.title;
+            modalDescription.innerText = project.description || 'Descripción del proyecto.';
+            portfolioModal.style.display = 'block';
         }
-        modalImage.src = imgSrc;
-        modalTitle.innerText = title;
-        modalDescription.innerText = description;
-        modal.style.display = 'block';
     }
 });
 
 closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
+    portfolioModal.style.display = 'none';
 });
 
 window.addEventListener('click', (e) => {
-    if (e.target == modal) {
-        modal.style.display = 'none';
+    if (e.target == portfolioModal) {
+        portfolioModal.style.display = 'none';
     }
 });
 
@@ -202,24 +220,9 @@ contactForm.addEventListener('submit', function(e){
     }
 
     if(valid) {
-        // Aquí puedes agregar la lógica para enviar el formulario, por ejemplo, usando fetch a un backend.
-        // Por ahora, mostraremos una alerta y reiniciaremos el formulario.
-
+        // Lógica para enviar el formulario
         alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
         contactForm.reset();
     }
-});
-
-// Google Maps Initialization
-function initMap() {
-    const location = { lat: 39.5696, lng: 2.6502 }; // Coordenadas de Palma de Mallorca
-    const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: location,
-    });
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: '[Tu Empresa]',
-    });
 }
+);
