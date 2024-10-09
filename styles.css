@@ -183,6 +183,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: -1;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    object-position: center center;
 }
 
 .hero-overlay {
@@ -201,6 +202,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     transform: translateY(-50%);
     animation: fadeIn 2s ease-in-out;
+    padding: 0 20px;
 }
 
 .hero-content h1 {
@@ -211,6 +213,29 @@ h1, h2, h3, h4, h5, h6 {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* Ajustes para que el video se vea correctamente en móviles */
+    .hero-video {
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
 }
 
 .btn {
@@ -708,14 +733,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
     .services-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }

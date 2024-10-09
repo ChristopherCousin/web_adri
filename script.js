@@ -1,3 +1,4 @@
+// Preloader
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     preloader.style.display = 'none';
@@ -64,7 +65,26 @@ smoothLinks.forEach(link => {
     });
 });
 
-// Portfolio Filtering
+// Swiper.js Initialization
+const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+        delay: 7000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+// Portfolio Filtering and Modal
+let portfolioData = [];
+
 const filterButtons = document.querySelectorAll('.filter-btn');
 const portfolioGrid = document.getElementById('portfolioGrid');
 const portfolioModal = document.getElementById('portfolioModal');
@@ -77,7 +97,8 @@ const closeModal = document.querySelector('.close');
 fetch('portfolio.json')
     .then(response => response.json())
     .then(data => {
-        renderPortfolio(data);
+        portfolioData = data;
+        renderPortfolio(portfolioData);
     })
     .catch(error => console.error('Error cargando el portafolio:', error));
 
@@ -129,9 +150,8 @@ portfolioGrid.addEventListener('click', (e) => {
     if (portfolioItem) {
         const imgSrc = portfolioItem.querySelector('img').src;
         const title = portfolioItem.querySelector('h3').innerText;
-        const projects = JSON.parse(localStorage.getItem('portfolioData')) || [];
 
-        const project = projects.find(p => p.title === title);
+        const project = portfolioData.find(p => p.title === title);
 
         if (project) {
             modalImage.src = project.afterImage || imgSrc;
@@ -150,23 +170,6 @@ window.addEventListener('click', (e) => {
     if (e.target == portfolioModal) {
         portfolioModal.style.display = 'none';
     }
-});
-
-// Swiper.js Initialization
-const swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-        delay: 7000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
 });
 
 // Contact Form Validation and Submission
@@ -224,5 +227,4 @@ contactForm.addEventListener('submit', function(e){
         alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
         contactForm.reset();
     }
-}
-);
+});

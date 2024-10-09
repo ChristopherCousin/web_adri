@@ -2,26 +2,23 @@
     {
         "title": "Reforma de Cocina Moderna",
         "category": "cocina",
-        "image": "assets/portfolio1.jpg",
-        "beforeImage": "assets/portfolio1-before.jpg",
-        "afterImage": "assets/portfolio1-after.jpg",
-        "description": "Proyecto de reforma de cocina moderna con acabados de alta calidad y diseño funcional."
+        "image": "assets/portfolio/cocina1.jpg",
+        "afterImage": "assets/portfolio/cocina1_after.jpg",
+        "description": "Reforma integral de cocina con acabados modernos y funcionales."
     },
     {
-        "title": "Renovación de Baño Elegante",
+        "title": "Baño Minimalista",
         "category": "baño",
-        "image": "assets/portfolio2.jpg",
-        "beforeImage": "assets/portfolio2-before.jpg",
-        "afterImage": "assets/portfolio2-after.jpg",
-        "description": "Renovación completa de baño con elementos elegantes y materiales de primera."
+        "image": "assets/portfolio/baño1.jpg",
+        "afterImage": "assets/portfolio/baño1_after.jpg",
+        "description": "Diseño y reforma de baño minimalista con materiales de alta calidad."
     },
     {
-        "title": "Reforma Integral de Vivienda",
+        "title": "Reforma de Vivienda Completa",
         "category": "vivienda",
-        "image": "assets/portfolio3.jpg",
-        "beforeImage": "assets/portfolio3-before.jpg",
-        "afterImage": "assets/portfolio3-after.jpg",
-        "description": "Reforma integral de vivienda, optimizando espacios y mejorando la estética general."
+        "image": "assets/portfolio/vivienda1.jpg",
+        "afterImage": "assets/portfolio/vivienda1_after.jpg",
+        "description": "Reforma integral de vivienda, optimizando espacios y funcionalidad."
     }
-    // Agrega más proyectos aquí
+    // Puedes agregar más proyectos según tus necesidades
 ]
