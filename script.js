@@ -18,7 +18,7 @@ hamburger.addEventListener('click', () => {
     hamburger.setAttribute('aria-expanded', isActive);
 });
 
-// Close navbar on link click (mobile)
+// Cerrar el menú al hacer clic en un enlace (móvil)
 navLinksItems.forEach(link => {
     link.addEventListener('click', () => {
         if (navLinks.classList.contains('active')) {
@@ -29,7 +29,7 @@ navLinksItems.forEach(link => {
     });
 });
 
-// Navbar Background Change on Scroll
+// Cambio de fondo de la Navbar al hacer scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 80) {
@@ -38,7 +38,7 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 
-    // Active Link Switching
+    // Cambio de enlace activo
     const sections = document.querySelectorAll('section');
     const scrollPos = window.scrollY + 200;
 
@@ -54,7 +54,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Smooth Scrolling
+// Scroll suave
 const smoothLinks = document.querySelectorAll('a[href^="#"]');
 
 smoothLinks.forEach(link => {
@@ -75,17 +75,17 @@ smoothLinks.forEach(link => {
     });
 });
 
-// Swiper.js Initialization for Testimonials (Sin paginación ni navegación)
+// Inicialización de Swiper.js para Testimonios
 const swiper = new Swiper('.swiper-container', {
     loop: true,
     autoplay: {
         delay: 7000,
         disableOnInteraction: false,
     },
-    // Eliminados los controles de paginación y navegación
+    // Controles de paginación y navegación eliminados
 });
 
-// Portfolio Filtering and Modal
+// Filtrado del Portafolio y Modal
 let portfolioData = [];
 
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -134,9 +134,9 @@ function renderPortfolio(projects) {
 // Filtrado de Portafolio
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Remove active class from all buttons
+        // Remover clase activa de todos los botones
         filterButtons.forEach(button => button.classList.remove('active'));
-        // Add active class to clicked button
+        // Añadir clase activa al botón clicado
         btn.classList.add('active');
 
         const filter = btn.getAttribute('data-filter');
@@ -154,54 +154,7 @@ filterButtons.forEach(btn => {
     });
 });
 
-// Funcionalidad del Slider de Comparación
-function initImageComparison() {
-    const slider = document.querySelector('.slider');
-    const beforeImage = document.getElementById('beforeImage');
-    const afterImage = document.getElementById('afterImage');
-    const imageComparison = document.querySelector('.image-comparison');
-    let isDragging = false;
-
-    const setSliderPosition = (clientX) => {
-        const rect = imageComparison.getBoundingClientRect();
-        let offsetX = clientX - rect.left;
-        if (offsetX < 0) offsetX = 0;
-        if (offsetX > rect.width) offsetX = rect.width;
-        const percent = (offsetX / rect.width) * 100;
-        beforeImage.style.width = `${percent}%`;
-        afterImage.style.clipPath = `inset(0 0 0 ${100 - percent}%)`;
-        slider.style.left = `${percent}%`;
-    };
-
-    slider.addEventListener('mousedown', () => {
-        isDragging = true;
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        setSliderPosition(e.clientX);
-    });
-
-    // Para dispositivos táctiles
-    slider.addEventListener('touchstart', () => {
-        isDragging = true;
-    });
-
-    document.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    document.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const touch = e.touches[0];
-        setSliderPosition(touch.clientX);
-    });
-}
-
+// Función para manejar el clic en un elemento del portafolio
 portfolioGrid.addEventListener('click', (e) => {
     const portfolioItem = e.target.closest('.portfolio-item');
     if (portfolioItem) {
@@ -212,33 +165,102 @@ portfolioGrid.addEventListener('click', (e) => {
         if (project) {
             // Establecer título y descripción
             modalTitle.innerText = project.title;
-            modalDescription.innerText = project.description || 'Descripción del proyecto.';
+            modalDescription.innerText = project.description || 'Descripción del proyecto...';
 
-            // Configurar las imágenes en Swiper
+            // Configurar las imágenes y videos en Swiper
             const modalSwiperWrapper = document.getElementById('modalSwiperWrapper');
             modalSwiperWrapper.innerHTML = ''; // Limpiar diapositivas anteriores
 
-            // Agregar diapositivas para las imágenes
+            // Crear una lista de medios disponibles
+            const mediaItems = [];
+
+            // Verificar y agregar medios al array
             if (project.beforeImage) {
-                const slideBefore = document.createElement('div');
-                slideBefore.classList.add('swiper-slide');
-                slideBefore.innerHTML = `<img src="${project.beforeImage}" alt="Antes">`;
-                modalSwiperWrapper.appendChild(slideBefore);
+                mediaItems.push({
+                    type: 'image',
+                    src: project.beforeImage,
+                    alt: 'Antes'
+                });
             }
 
             if (project.afterImage) {
-                const slideAfter = document.createElement('div');
-                slideAfter.classList.add('swiper-slide');
-                slideAfter.innerHTML = `<img src="${project.afterImage}" alt="Después">`;
-                modalSwiperWrapper.appendChild(slideAfter);
+                mediaItems.push({
+                    type: 'image',
+                    src: project.afterImage,
+                    alt: 'Después'
+                });
             }
 
-            // Si el proyecto tiene imágenes adicionales, agregarlas
+            if (project.beforeVideo) {
+                mediaItems.push({
+                    type: 'video',
+                    src: project.beforeVideo
+                });
+            }
+
+            if (project.afterVideo) {
+                mediaItems.push({
+                    type: 'video',
+                    src: project.afterVideo
+                });
+            }
+
+            if (project.video) {
+                mediaItems.push({
+                    type: 'video',
+                    src: project.video
+                });
+            }
+
+            if (project.image) {
+                mediaItems.push({
+                    type: 'image',
+                    src: project.image,
+                    alt: project.title
+                });
+            }
+
             if (project.additionalImages && Array.isArray(project.additionalImages)) {
                 project.additionalImages.forEach(imageUrl => {
+                    mediaItems.push({
+                        type: 'image',
+                        src: imageUrl,
+                        alt: 'Imagen'
+                    });
+                });
+            }
+
+            if (project.additionalVideos && Array.isArray(project.additionalVideos)) {
+                project.additionalVideos.forEach(videoUrl => {
+                    mediaItems.push({
+                        type: 'video',
+                        src: videoUrl
+                    });
+                });
+            }
+
+            // Si no hay medios, mostrar mensaje
+            if (mediaItems.length === 0) {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                slide.innerHTML = `<p>No hay medios disponibles para este proyecto.</p>`;
+                modalSwiperWrapper.appendChild(slide);
+            } else {
+                // Agregar los medios al Swiper
+                mediaItems.forEach(media => {
                     const slide = document.createElement('div');
                     slide.classList.add('swiper-slide');
-                    slide.innerHTML = `<img src="${imageUrl}" alt="Imagen">`;
+
+                    if (media.type === 'image') {
+                        slide.innerHTML = `<img src="${media.src}" alt="${media.alt || ''}">`;
+                    } else if (media.type === 'video') {
+                        slide.innerHTML = `
+                            <video controls>
+                                <source src="${media.src}" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>`;
+                    }
+
                     modalSwiperWrapper.appendChild(slide);
                 });
             }
@@ -329,13 +351,13 @@ contactModal.addEventListener('click', (e) => {
     }
 });
 
-// Contact Form Validation and Submission
+// Validación y Envío del Formulario de Contacto
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function(e){
     e.preventDefault();
 
-    // Clear previous errors
+    // Limpiar errores previos
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(msg => {
         msg.style.display = 'none';
@@ -380,7 +402,7 @@ contactForm.addEventListener('submit', function(e){
     }
 
     if(valid) {
-        // Lógica para enviar el formulario
+        // Lógica para enviar el formulario (a implementar)
         alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
         contactForm.reset();
         // Cerrar el modal de contacto si está abierto
