@@ -254,9 +254,23 @@ portfolioGrid.addEventListener('click', (e) => {
                     if (media.type === 'image') {
                         slide.innerHTML = `<img src="${media.src}" alt="${media.alt || ''}">`;
                     } else if (media.type === 'video') {
+                        // Detectar la extensión del video para establecer el tipo correcto
+                        const videoExtension = media.src.split('.').pop().toLowerCase();
+                        let videoType = '';
+
+                        if (videoExtension === 'mp4') {
+                            videoType = 'video/mp4';
+                        } else if (videoExtension === 'webm') {
+                            videoType = 'video/webm';
+                        } else if (videoExtension === 'ogg') {
+                            videoType = 'video/ogg';
+                        } else {
+                            videoType = 'video/mp4'; // Predeterminado
+                        }
+
                         slide.innerHTML = `
                             <video controls>
-                                <source src="${media.src}" type="video/mp4">
+                                <source src="${media.src}" type="${videoType}">
                                 Tu navegador no soporta videos HTML5.
                             </video>`;
                     }
@@ -286,8 +300,7 @@ portfolioGrid.addEventListener('click', (e) => {
                 },
             });
         }
-    }
-});
+    });
 
 // Cerrar Modal de Portfolio
 closePortfolioModal.addEventListener('click', () => {
