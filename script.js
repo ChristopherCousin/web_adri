@@ -76,7 +76,7 @@ smoothLinks.forEach(link => {
 });
 
 // Inicialización de Swiper.js para Testimonios
-const swiper = new Swiper('.swiper-container', {
+const testimonialSwiper = new Swiper('.testimonials .swiper-container', {
     loop: true,
     autoplay: {
         delay: 7000,
@@ -300,7 +300,8 @@ portfolioGrid.addEventListener('click', (e) => {
                 },
             });
         }
-    });
+    }
+});
 
 // Cerrar Modal de Portfolio
 closePortfolioModal.addEventListener('click', () => {
