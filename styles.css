@@ -993,3 +993,61 @@ section {
     object-fit: contain;
     border-radius: 10px;
 }
+
+/* Estilos para el Slider de Comparación */
+.before-after-slider {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.before-after-slider img {
+    width: 100%;
+    display: block;
+}
+
+/* Ajustes para que el slider se vea bien en móviles */
+@media (max-width: 768px) {
+    .before-after-slider {
+        max-width: 100%;
+    }
+}
+
+.video-thumbnail {
+    position: relative;
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.video-thumbnail .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+}
+
+/* Ajustes para el modal en pantallas pequeñas */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Ajustes para las imágenes y videos dentro del Swiper */
+.modal-content .swiper-slide img,
+.modal-content .swiper-slide video {
+    max-height: 60vh;
+}

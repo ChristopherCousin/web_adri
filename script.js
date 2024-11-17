@@ -117,9 +117,12 @@ function renderPortfolio(projects) {
         portfolioItem.classList.add('portfolio-item');
         portfolioItem.setAttribute('data-category', project.category);
 
+        // Usar la imagen principal o la miniatura del video
+        let imageSrc = project.image || project.videoThumbnail;
+
         portfolioItem.innerHTML = `
             <div class="portfolio-image">
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${imageSrc}" alt="${project.title}">
             </div>
             <div class="portfolio-overlay">
                 <h3>${project.title}</h3>
@@ -171,110 +174,44 @@ portfolioGrid.addEventListener('click', (e) => {
             const modalSwiperWrapper = document.getElementById('modalSwiperWrapper');
             modalSwiperWrapper.innerHTML = ''; // Limpiar diapositivas anteriores
 
-            // Crear una lista de medios disponibles
-            const mediaItems = [];
-
-            // Verificar y agregar medios al array
-            if (project.beforeImage) {
-                mediaItems.push({
-                    type: 'image',
-                    src: project.beforeImage,
-                    alt: 'Antes'
-                });
-            }
-
-            if (project.afterImage) {
-                mediaItems.push({
-                    type: 'image',
-                    src: project.afterImage,
-                    alt: 'Después'
-                });
-            }
-
-            if (project.beforeVideo) {
-                mediaItems.push({
-                    type: 'video',
-                    src: project.beforeVideo
-                });
-            }
-
-            if (project.afterVideo) {
-                mediaItems.push({
-                    type: 'video',
-                    src: project.afterVideo
-                });
-            }
-
-            if (project.video) {
-                mediaItems.push({
-                    type: 'video',
-                    src: project.video
-                });
-            }
-
-            if (project.image) {
-                mediaItems.push({
-                    type: 'image',
-                    src: project.image,
-                    alt: project.title
-                });
-            }
-
-            if (project.additionalImages && Array.isArray(project.additionalImages)) {
-                project.additionalImages.forEach(imageUrl => {
-                    mediaItems.push({
-                        type: 'image',
-                        src: imageUrl,
-                        alt: 'Imagen'
-                    });
-                });
-            }
-
-            if (project.additionalVideos && Array.isArray(project.additionalVideos)) {
-                project.additionalVideos.forEach(videoUrl => {
-                    mediaItems.push({
-                        type: 'video',
-                        src: videoUrl
-                    });
-                });
-            }
-
-            // Si no hay medios, mostrar mensaje
-            if (mediaItems.length === 0) {
+            // Agregar diapositivas al Swiper
+            if (project.beforeImage && project.afterImage) {
+                // Slider de comparación de imágenes
                 const slide = document.createElement('div');
                 slide.classList.add('swiper-slide');
-                slide.innerHTML = `<p>No hay medios disponibles para este proyecto.</p>`;
+                slide.innerHTML = `
+                    <div class="before-after-slider">
+                        <img src="${project.beforeImage}" alt="Antes">
+                        <img src="${project.afterImage}" alt="Después">
+                    </div>
+                `;
                 modalSwiperWrapper.appendChild(slide);
-            } else {
-                // Agregar los medios al Swiper
-                mediaItems.forEach(media => {
+
+                // Inicializar el slider
+                setTimeout(() => {
+                    new BeforeAfter(slide.querySelector('.before-after-slider'));
+                }, 0);
+            }
+
+            if (project.video && project.videoThumbnail) {
+                // Miniatura de video con botón de reproducción
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                slide.innerHTML = `
+                    <div class="video-thumbnail" data-video="${project.video}">
+                        <img src="${project.videoThumbnail}" alt="${project.title}">
+                        <span class="play-button"><i class="fas fa-play"></i></span>
+                    </div>
+                `;
+                modalSwiperWrapper.appendChild(slide);
+            }
+
+            // Agregar imágenes adicionales si existen
+            if (project.additionalImages && Array.isArray(project.additionalImages)) {
+                project.additionalImages.forEach(imageUrl => {
                     const slide = document.createElement('div');
                     slide.classList.add('swiper-slide');
-
-                    if (media.type === 'image') {
-                        slide.innerHTML = `<img src="${media.src}" alt="${media.alt || ''}">`;
-                    } else if (media.type === 'video') {
-                        // Detectar la extensión del video para establecer el tipo correcto
-                        const videoExtension = media.src.split('.').pop().toLowerCase();
-                        let videoType = '';
-
-                        if (videoExtension === 'mp4') {
-                            videoType = 'video/mp4';
-                        } else if (videoExtension === 'webm') {
-                            videoType = 'video/webm';
-                        } else if (videoExtension === 'ogg') {
-                            videoType = 'video/ogg';
-                        } else {
-                            videoType = 'video/mp4'; // Predeterminado
-                        }
-
-                        slide.innerHTML = `
-                            <video controls>
-                                <source src="${media.src}" type="${videoType}">
-                                Tu navegador no soporta videos HTML5.
-                            </video>`;
-                    }
-
+                    slide.innerHTML = `<img src="${imageUrl}" alt="${project.title}">`;
                     modalSwiperWrapper.appendChild(slide);
                 });
             }
@@ -298,6 +235,20 @@ portfolioGrid.addEventListener('click', (e) => {
                     el: '.swiper-pagination',
                     clickable: true,
                 },
+            });
+
+            // Añadir evento para reproducir video al hacer clic en la miniatura
+            modalSwiperWrapper.addEventListener('click', function(e) {
+                const thumbnail = e.target.closest('.video-thumbnail');
+                if (thumbnail) {
+                    const videoSrc = thumbnail.getAttribute('data-video');
+                    thumbnail.innerHTML = `
+                        <video controls autoplay>
+                            <source src="${videoSrc}" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                    `;
+                }
             });
         }
     }
