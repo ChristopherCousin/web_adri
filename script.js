@@ -111,18 +111,26 @@ fetch('portfolio.json')
 
 // Función para renderizar el portafolio
 function renderPortfolio(projects) {
-    portfolioGrid.innerHTML = ''; // Limpiar contenido previo
+    if (!projects || projects.length === 0) {
+        portfolioGrid.innerHTML = `
+            <div class="portfolio-error">
+                <p>No hay proyectos disponibles en este momento.</p>
+            </div>`;
+        return;
+    }
+
+    portfolioGrid.innerHTML = '';
     projects.forEach(project => {
         const portfolioItem = document.createElement('div');
         portfolioItem.classList.add('portfolio-item');
         portfolioItem.setAttribute('data-category', project.category);
 
-        // Usar la imagen principal o la miniatura del video
-        let imageSrc = project.image || project.videoThumbnail;
+        const imageSrc = project.image || project.videoThumbnail || 'assets/portfolio/default.jpg';
 
         portfolioItem.innerHTML = `
             <div class="portfolio-image">
-                <img src="${imageSrc}" alt="${project.title}">
+                <img src="${imageSrc}" alt="${project.title}" 
+                     onerror="this.onerror=null; this.src='assets/portfolio/default.jpg';">
             </div>
             <div class="portfolio-overlay">
                 <h3>${project.title}</h3>
@@ -133,7 +141,6 @@ function renderPortfolio(projects) {
         portfolioGrid.appendChild(portfolioItem);
     });
 }
-
 // Filtrado de Portafolio
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -378,3 +385,4 @@ contactForm.addEventListener('submit', function(e){
         }
     }
 });
+
