@@ -125,14 +125,14 @@ function renderPortfolio(projects) {
         portfolioItem.classList.add('portfolio-item');
         portfolioItem.setAttribute('data-category', project.category);
 
-        const imageSrc = project.image || project.videoThumbnail || 'assets/portfolio/default.jpg';
+        const imageSrc = project.image || project.videoThumbnail;
+        if (!imageSrc) return; // Skip if no image available
 
         portfolioItem.innerHTML = `
             <div class="portfolio-image">
                 <img src="${imageSrc}" 
                      alt="${project.title}"
-                     loading="lazy"
-                     onerror="this.onerror=null; this.src='assets/portfolio/default.jpg';">
+                     loading="lazy">
                 <div class="portfolio-overlay">
                     <h3>${project.title}</h3>
                     <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
@@ -140,6 +140,7 @@ function renderPortfolio(projects) {
             </div>
         `;
 
+        portfolioItem.addEventListener('click', () => showPortfolioModal(project));
         portfolioGrid.appendChild(portfolioItem);
     });
 }
