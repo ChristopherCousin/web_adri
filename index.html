@@ -166,54 +166,53 @@
         <div class="container">
             <h2>Nuestros Proyectos</h2>
             <div class="portfolio-grid">
-                <!-- Proyecto 1: Video de Antes/Después -->
-                <div class="portfolio-item featured">
-                    <div class="portfolio-image video-container">
-                        <video class="preview-video" poster="assets/portfolio/video_thumbnail.jpg">
-                            <source src="assets/portfolio/transformaciones.webm" type="video/webm">
-                            <source src="assets/portfolio/transformaciones.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                        <div class="portfolio-overlay">
-                            <h3>Nuestras Mejores Transformaciones</h3>
-                            <span class="portfolio-icon"><i class="fas fa-play"></i></span>
+                <!-- Proyecto 1: Comparación Antes/Después -->
+                <div class="portfolio-item">
+                    <div class="image-compare">
+                        <img src="assets/portfolio/cocina_before.jpg" alt="Antes" class="before-image">
+                        <img src="assets/portfolio/cocina_after.jpg" alt="Después" class="after-image">
+                        <div class="slider-line">
+                            <div class="slider-button">
+                                <i class="fas fa-chevron-left"></i>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
                         </div>
+                        <span class="label before">Antes</span>
+                        <span class="label after">Después</span>
                     </div>
                 </div>
 
                 <!-- Proyecto 2: Comparación Antes/Después -->
                 <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="before-after-container" data-before="assets/portfolio/cocina_before.jpg" data-after="assets/portfolio/cocina_after.jpg">
-                            <img src="assets/portfolio/cocina_after.jpg" alt="Reforma de Cocina">
+                    <div class="image-compare">
+                        <img src="assets/portfolio/bano1_before.jpg" alt="Antes" class="before-image">
+                        <img src="assets/portfolio/bano1.jpg" alt="Después" class="after-image">
+                        <div class="slider-line">
+                            <div class="slider-button">
+                                <i class="fas fa-chevron-left"></i>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
                         </div>
-                        <div class="portfolio-overlay">
-                            <h3>Reforma Integral de Cocina</h3>
-                            <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
-                        </div>
+                        <span class="label before">Antes</span>
+                        <span class="label after">Después</span>
                     </div>
                 </div>
 
                 <!-- Proyecto 3: Comparación Antes/Después -->
                 <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="before-after-container" data-before="assets/portfolio/bano1_before.jpg" data-after="assets/portfolio/bano1.jpg">
-                            <img src="assets/portfolio/bano1.jpg" alt="Reforma de Baño">
+                    <div class="image-compare">
+                        <img src="assets/portfolio/transformaciones.jpg" alt="Antes" class="before-image">
+                        <img src="assets/portfolio/transformaciones_after.jpg" alt="Después" class="after-image">
+                        <div class="slider-line">
+                            <div class="slider-button">
+                                <i class="fas fa-chevron-left"></i>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
                         </div>
-                        <div class="portfolio-overlay">
-                            <h3>Reforma Completa de Baño</h3>
-                            <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
-                        </div>
+                        <span class="label before">Antes</span>
+                        <span class="label after">Después</span>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Modal para Proyectos -->
-        <div id="portfolioModal" class="modal">
-            <span class="close">&times;</span>
-            <div class="project-viewer">
-                <!-- El contenido se cargará dinámicamente -->
             </div>
         </div>
     </section>
