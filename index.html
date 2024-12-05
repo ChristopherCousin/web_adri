@@ -164,37 +164,59 @@
     <!-- Proyectos (Portafolio) -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>Proyectos 2Recientes</h2>
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="cocina">Cocinas</button>
-                <button class="filter-btn" data-filter="bano">Baños</button>
-                <button class="filter-btn" data-filter="vivienda">Viviendas</button>
-            </div>
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Los proyectos se cargarán dinámicamente aquí -->
+            <h2>Nuestros Proyectos</h2>
+            <div class="portfolio-grid">
+                <!-- Proyecto 1: Video de Antes/Después -->
+                <div class="portfolio-item featured" data-category="all">
+                    <div class="portfolio-image video-container">
+                        <video poster="assets/portfolio/video_thumbnail.jpg" class="preview-video">
+                            <source src="assets/portfolio/transformaciones.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="portfolio-overlay">
+                            <h3>Nuestras Mejores Transformaciones</h3>
+                            <span class="portfolio-icon"><i class="fas fa-play"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2: Comparación Antes/Después -->
+                <div class="portfolio-item" data-category="cocina">
+                    <div class="portfolio-image">
+                        <div class="before-after-container" data-before="assets/portfolio/cocina_before.jpg" data-after="assets/portfolio/cocina_after.jpg">
+                            <img src="assets/portfolio/cocina_after.jpg" alt="Reforma de Cocina">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Reforma Integral de Cocina</h3>
+                            <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3: Comparación Antes/Después -->
+                <div class="portfolio-item" data-category="bano">
+                    <div class="portfolio-image">
+                        <div class="before-after-container" data-before="assets/portfolio/bano_before.jpg" data-after="assets/portfolio/bano_after.jpg">
+                            <img src="assets/portfolio/bano_after.jpg" alt="Reforma de Baño">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Reforma Completa de Baño</h3>
+                            <span class="portfolio-icon"><i class="fas fa-search-plus"></i></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    <!-- Modal de Portfolio Mejorado -->
-    <div id="portfolioModal" class="modal" aria-hidden="true">
-        <span class="close" aria-label="Cerrar Modal">&times;</span>
-        <div class="modal-content">
-            <h3 id="modalTitle">Título del Proyecto</h3>
-            <!-- Swiper -->
-            <div class="swiper-container portfolio-swiper">
-                <div class="swiper-wrapper" id="modalSwiperWrapper">
-                    <!-- Las diapositivas se agregarán dinámicamente aquí -->
+        <!-- Modal Mejorado para Proyectos -->
+        <div id="portfolioModal" class="modal" aria-hidden="true">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="project-viewer">
+                    <!-- El contenido se cargará dinámicamente -->
                 </div>
-                <!-- Paginación -->
-                <div class="swiper-pagination"></div>
-                <!-- Botones de navegación -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
             </div>
-            <p id="modalDescription">Descripción detallada del proyecto...</p>
         </div>
-    </div>
     </section>
 
     <!-- Testimonios -->

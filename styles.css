@@ -466,85 +466,86 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Portfolio Section */
 .portfolio {
-    padding: 50px 0;
+    padding: 80px 0;
     background-color: var(--light-color);
 }
 
-.portfolio-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0 40px;
-    padding: 0 20px;
-}
-
-.filter-btn {
-    padding: 10px 25px;
-    border: 2px solid var(--secondary-color);
-    border-radius: 25px;
-    background: none;
-    color: var(--secondary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
+.portfolio h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: var(--dark-color);
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     padding: 0 20px;
+}
+
+/* Proyecto destacado (el del video) */
+.portfolio-item.featured {
+    grid-column: 1 / -1;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .portfolio-item {
     position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .portfolio-image {
     position: relative;
     width: 100%;
-    height: 100%;
+    padding-top: 75%; /* Aspect ratio 4:3 */
+    background: #f5f5f5;
 }
 
-.portfolio-image img {
+.portfolio-image img,
+.portfolio-image video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .filter-btn {
-        padding: 8px 20px;
-        font-size: 14px;
-    }
+/* Contenedor de video */
+.video-container {
+    padding-top: 56.25%; /* Aspect ratio 16:9 para videos */
 }
 
+.preview-video {
+    cursor: pointer;
+}
+
+/* Overlay con efecto de hover */
 .portfolio-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(44, 62, 80, 0.7);
-    color: var(--light-color);
-    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0;
     transition: opacity 0.3s ease;
+    padding: 20px;
+    text-align: center;
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -552,32 +553,131 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-overlay h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay h3 {
+    transform: translateY(0);
 }
 
 .portfolio-icon {
-    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
     background: var(--secondary-color);
-    padding: 10px;
     border-radius: 50%;
-    transition: background 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    transform: scale(0);
+    transition: transform 0.3s ease;
 }
 
-.portfolio-icon:hover {
-    background: var(--accent-color);
+.portfolio-item:hover .portfolio-icon {
+    transform: scale(1);
 }
 
-/* Modal de Portfolio */
-.portfolioModal {
-    /* Ya definido en #portfolioModal */
+/* Modal de Proyecto */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
 }
 
-/* Animaciones del Modal */
-@keyframes fadeInModal {
-    from { opacity: 0; transform: scale(0.7); }
-    to { opacity: 1; transform: scale(1); }
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--dark-color);
+    z-index: 1;
+}
+
+.project-viewer {
+    width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+/* Comparador Antes/Después */
+.before-after-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.before-after-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .portfolio-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); }
+    to { transform: scale(1); }
+}
+
+.modal.active {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+    animation: scaleIn 0.3s ease forwards;
 }
 
 /* Comparación de Imágenes */
