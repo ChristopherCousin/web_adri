@@ -482,6 +482,8 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     padding: 0 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 /* Proyecto destacado (el del video) */
@@ -497,6 +499,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
 }
 
 .portfolio-item:hover {
@@ -521,16 +524,38 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
 }
 
-/* Contenedor de video */
+/* Video container styles */
 .video-container {
-    padding-top: 56.25%; /* Aspect ratio 16:9 para videos */
+    padding-top: 56.25%; /* 16:9 aspect ratio */
 }
 
 .preview-video {
     cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Overlay con efecto de hover */
+/* Before/After container */
+.before-after-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.before-after-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay styles */
 .portfolio-overlay {
     position: absolute;
     top: 0;
@@ -543,7 +568,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     padding: 20px;
     text-align: center;
 }
@@ -582,7 +607,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1);
 }
 
-/* Modal de Proyecto */
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -591,7 +616,13 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
 }
 
 .modal-content {
@@ -602,6 +633,12 @@ h1, h2, h3, h4, h5, h6 {
     background: white;
     padding: 20px;
     border-radius: 15px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
 }
 
 .close {
@@ -612,6 +649,11 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     color: var(--dark-color);
     z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--secondary-color);
 }
 
 .project-viewer {
@@ -620,25 +662,23 @@ h1, h2, h3, h4, h5, h6 {
     overflow: auto;
 }
 
-/* Comparador Antes/Después */
-.before-after-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
-.before-after-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
+    .portfolio {
+        padding: 60px 0;
+    }
+
+    .portfolio h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
     .portfolio-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -649,105 +689,146 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.2rem;
     }
 
-    .modal-content {
-        width: 95%;
-        margin: 20px auto;
-    }
-
     .portfolio-icon {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .close {
+        font-size: 24px;
+        right: 15px;
+        top: 15px;
+    }
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@media (max-width: 480px) {
+    .portfolio {
+        padding: 40px 0;
+    }
+
+    .portfolio-grid {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        margin: 10px auto;
+        padding: 10px;
+    }
 }
 
-@keyframes scaleIn {
-    from { transform: scale(0.9); }
-    to { transform: scale(1); }
-}
-
-.modal.active {
-    animation: fadeIn 0.3s ease forwards;
-}
-
-.modal-content {
-    animation: scaleIn 0.3s ease forwards;
-}
-
-/* Comparación de Imágenes */
-.image-comparison {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    overflow: hidden;
-    margin: 0 auto 20px auto;
-}
-
-.image-comparison img {
+/* Loading animation for images */
+.portfolio-image::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    transition: width 0.5s ease, clip-path 0.5s ease;
+    height: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    z-index: -1;
 }
 
-/* Estilos para el Swiper en el modal de portafolio */
-.modal-content .swiper-container {
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Optimizations for video loading */
+.preview-video {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.preview-video.loaded {
+    opacity: 1;
+}
+
+/* Before/After slider improvements */
+.comparison-images {
+    position: relative;
     width: 100%;
-    height: 400px; /* Ajusta la altura según necesites */
-    margin-bottom: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 
-.modal-content .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content .swiper-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-}
-
-.modal-content .swiper-button-prev,
-.modal-content .swiper-button-next {
-    color: var(--secondary-color);
-}
-
-.modal-content .swiper-pagination-bullet {
-    background: var(--secondary-color);
-}
-
-.image-comparison #beforeImage {
-    width: 50%;
-    z-index: 1;
-}
-
-.image-comparison #afterImage {
-    width: 100%;
-    z-index: 2;
-    clip-path: inset(0 0 0 50%);
-}
-
-.slider {
+.slider-handle {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 5px; /* Aumentado para facilitar el toque en móviles */
+    width: 2px;
     height: 100%;
     background: var(--secondary-color);
     cursor: ew-resize;
-    z-index: 3;
+    z-index: 10;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.slider-button i {
+    font-size: 0.8rem;
+    margin: 0 2px;
+}
+
+.after-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .portfolio-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .portfolio-overlay h3 {
+        transform: translateY(0);
+    }
+
+    .portfolio-icon {
+        transform: scale(1);
+    }
+
+    .slider-handle {
+        width: 4px; /* Wider for touch devices */
+    }
+
+    .slider-button {
+        width: 48px;
+        height: 48px;
+    }
 }
 
 /* Testimonios Section */
