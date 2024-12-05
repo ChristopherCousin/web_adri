@@ -485,7 +485,7 @@ h1, h2, h3, h4, h5, h6 {
 .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 10px;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -495,7 +495,6 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 100%;
     background: white;
-    border-radius: 10px;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -504,7 +503,7 @@ h1, h2, h3, h4, h5, h6 {
 .image-compare {
     position: relative;
     width: 100%;
-    padding-bottom: 66.67%; /* Aspect ratio 3:2 */
+    padding-bottom: 52%; /* Proporción exacta para 1920x1000 */
     overflow: hidden;
     margin: 0;
 }
@@ -558,16 +557,17 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px 0 0 0;
     }
 
-    .portfolio-grid {
-        gap: 10px;
-    }
-
     .portfolio h2 {
         margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    .portfolio-grid {
+        gap: 8px;
     }
 
     .image-compare {
-        padding-bottom: 75%; /* Aspect ratio 4:3 para móvil */
+        padding-bottom: 52%; /* Mantener la misma proporción en móvil */
     }
 
     .slider-line {
