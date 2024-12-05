@@ -2,11 +2,13 @@ import { BeforeAfter } from './before-after.js';
 
 export class Portfolio {
     constructor() {
+        // Referencias a elementos del DOM
         this.portfolioGrid = document.querySelector('.portfolio-grid');
         this.modal = document.getElementById('portfolioModal');
         this.projectViewer = this.modal.querySelector('.project-viewer');
         this.closeBtn = this.modal.querySelector('.close');
         
+        // Inicializar eventos y funcionalidades
         this.initializeEventListeners();
     }
 
@@ -19,6 +21,11 @@ export class Portfolio {
 
         // Inicializar items del portafolio
         this.initializePortfolioItems();
+
+        // Manejar tecla ESC para cerrar modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.closeModal();
+        });
     }
 
     initializePortfolioItems() {
@@ -28,7 +35,8 @@ export class Portfolio {
             const video = videoContainer.querySelector('video');
             const playButton = videoContainer.querySelector('.portfolio-icon');
             
-            playButton.addEventListener('click', (e) => {
+            // Evento para reproducir video
+            videoContainer.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.openVideoModal(video);
             });
@@ -56,10 +64,12 @@ export class Portfolio {
 
     openVideoModal(video) {
         this.projectViewer.innerHTML = `
-            <video controls autoplay class="modal-video">
-                <source src="${video.querySelector('source').src}" type="${video.querySelector('source').type}">
-                Tu navegador no soporta videos HTML5.
-            </video>
+            <div class="modal-video-container">
+                <video controls autoplay class="modal-video">
+                    <source src="${video.querySelector('source').src}" type="${video.querySelector('source').type}">
+                    Tu navegador no soporta videos HTML5.
+                </video>
+            </div>
         `;
         this.showModal();
     }
@@ -69,9 +79,11 @@ export class Portfolio {
         const afterImg = container.getAttribute('data-after');
         
         this.projectViewer.innerHTML = `
-            <div class="before-after-container" 
-                 data-before="${beforeImg}" 
-                 data-after="${afterImg}">
+            <div class="modal-comparison-container">
+                <div class="before-after-container" 
+                     data-before="${beforeImg}" 
+                     data-after="${afterImg}">
+                </div>
             </div>
         `;
         
@@ -81,19 +93,23 @@ export class Portfolio {
 
     showModal() {
         this.modal.style.display = 'block';
-        setTimeout(() => {
-            this.modal.classList.add('active');
-        }, 10);
         document.body.style.overflow = 'hidden';
+        
+        // Usar setTimeout para asegurar que la transición funcione
+        requestAnimationFrame(() => {
+            this.modal.classList.add('active');
+        });
     }
 
     closeModal() {
         this.modal.classList.remove('active');
+        
+        // Esperar a que termine la animación antes de ocultar
         setTimeout(() => {
             this.modal.style.display = 'none';
             this.projectViewer.innerHTML = '';
+            document.body.style.overflow = 'auto';
         }, 300);
-        document.body.style.overflow = 'auto';
     }
 
     initializeBeforeAfter() {

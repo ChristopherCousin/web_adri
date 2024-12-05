@@ -10,11 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
     initNavigation();
     
-    const portfolio = new Portfolio();
-    portfolio.init();
-    
     initTestimonials();
     initContact();
     initModals();
     initBeforeAfter();
+    
+    new Portfolio();
 });
