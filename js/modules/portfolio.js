@@ -3,6 +3,7 @@ import { BeforeAfter } from './before-after.js';
 export class Portfolio {
     constructor() {
         this.initializeImageCompare();
+        this.initializeVideo();
     }
 
     initializeImageCompare() {
@@ -41,6 +42,35 @@ export class Portfolio {
             // Set initial position
             slider.style.left = '50%';
             afterImage.style.clipPath = 'inset(0 50% 0 0)';
+        });
+    }
+
+    initializeVideo() {
+        const videoContainer = document.querySelector('.video-container');
+        if (!videoContainer) return;
+
+        const video = videoContainer.querySelector('.portfolio-video');
+        const overlay = videoContainer.querySelector('.video-overlay');
+        const playButton = overlay.querySelector('.play-button');
+
+        const playVideo = () => {
+            video.play();
+            videoContainer.classList.add('playing');
+        };
+
+        const resetVideo = () => {
+            videoContainer.classList.remove('playing');
+        };
+
+        playButton.addEventListener('click', playVideo);
+        overlay.addEventListener('click', playVideo);
+
+        video.addEventListener('pause', resetVideo);
+        video.addEventListener('ended', resetVideo);
+
+        // Optimización para móviles
+        video.addEventListener('loadedmetadata', () => {
+            video.setAttribute('playsinline', '');
         });
     }
 }
