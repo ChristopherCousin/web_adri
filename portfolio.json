@@ -10,15 +10,15 @@
     {
         "title": "Reforma Integral de Cocina",
         "category": "cocina",
-        "beforeImage": "assets/portfolio/cocina_before.jpg",
-        "afterImage": "assets/portfolio/cocina_after.jpg",
+        "beforeImage": "assets/portfolio/antes.png",
+        "afterImage": "assets/portfolio/despues.png",
         "description": "Transformación completa de una cocina tradicional en un espacio moderno y funcional."
     },
     {
         "title": "Reforma Completa de Baño",
         "category": "bano",
-        "beforeImage": "assets/portfolio/bano1_before.jpg",
-        "afterImage": "assets/portfolio/bano1.jpg",
+        "beforeImage": "assets/portfolio/antes.png",
+        "afterImage": "assets/portfolio/despues.png",
         "description": "Renovación total de un baño antiguo en un espacio contemporáneo y elegante."
     }
 ]
