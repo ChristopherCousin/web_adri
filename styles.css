@@ -492,13 +492,14 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     background: #fff;
+    aspect-ratio: 4/3;
 }
 
 /* Image Compare Styles */
 .image-compare {
     position: relative;
     width: 100%;
-    padding-top: 75%; /* 4:3 Aspect Ratio */
+    height: 100%;
     overflow: hidden;
 }
 
@@ -525,6 +526,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--secondary-color);
     cursor: ew-resize;
     transform: translateX(-50%);
+    z-index: 2;
 }
 
 .slider-button {
@@ -541,6 +543,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     color: white;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 3;
 }
 
 .slider-button i {
@@ -557,7 +560,7 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     font-size: 14px;
     border-radius: 4px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .label.before {
@@ -586,7 +589,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .portfolio-grid {
-        grid-template-columns: 1fr;
         gap: 30px;
         padding: 0 15px;
     }
@@ -596,9 +598,14 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 12px;
     }
 
-    .slider-button {
-        width: 36px;
-        height: 36px;
+    .video-overlay h3 {
+        font-size: 1.4rem;
+    }
+
+    .play-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
 
@@ -1023,14 +1030,16 @@ section {
     grid-column: 1 / -1; /* Hace que el video ocupe todo el ancho */
     max-width: 1000px;
     margin: 0 auto;
+    aspect-ratio: 16/9;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    height: 100%;
     overflow: hidden;
     border-radius: 15px;
+    background: #000;
 }
 
 .portfolio-video {
@@ -1056,6 +1065,7 @@ section {
     align-items: center;
     opacity: 1;
     transition: opacity 0.3s ease;
+    z-index: 2;
 }
 
 .video-container.playing .video-overlay {
