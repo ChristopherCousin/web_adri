@@ -1,0 +1,10 @@
+/* Variables de Color */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #18bc9c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --accent-color: #e74c3c;
+    --font-family-primary: 'Montserrat', sans-serif;
+    --font-family-secondary: 'Roboto', sans-serif;
+} 
