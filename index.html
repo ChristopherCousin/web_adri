@@ -167,9 +167,9 @@
             <h2>Nuestros Proyectos</h2>
             <div class="portfolio-grid">
                 <!-- Proyecto 1: Video de Antes/Después -->
-                <div class="portfolio-item featured" data-category="all">
+                <div class="portfolio-item featured">
                     <div class="portfolio-image video-container">
-                        <video poster="assets/portfolio/video_thumbnail.jpg" class="preview-video">
+                        <video class="preview-video" poster="assets/portfolio/video_thumbnail.jpg">
                             <source src="assets/portfolio/transformaciones.webm" type="video/webm">
                             <source src="assets/portfolio/transformaciones.mp4" type="video/mp4">
                             Tu navegador no soporta videos HTML5.
@@ -182,7 +182,7 @@
                 </div>
 
                 <!-- Proyecto 2: Comparación Antes/Después -->
-                <div class="portfolio-item" data-category="cocina">
+                <div class="portfolio-item">
                     <div class="portfolio-image">
                         <div class="before-after-container" data-before="assets/portfolio/cocina_before.jpg" data-after="assets/portfolio/cocina_after.jpg">
                             <img src="assets/portfolio/cocina_after.jpg" alt="Reforma de Cocina">
@@ -195,7 +195,7 @@
                 </div>
 
                 <!-- Proyecto 3: Comparación Antes/Después -->
-                <div class="portfolio-item" data-category="bano">
+                <div class="portfolio-item">
                     <div class="portfolio-image">
                         <div class="before-after-container" data-before="assets/portfolio/bano1_before.jpg" data-after="assets/portfolio/bano1.jpg">
                             <img src="assets/portfolio/bano1.jpg" alt="Reforma de Baño">
@@ -209,13 +209,11 @@
             </div>
         </div>
 
-        <!-- Modal Mejorado para Proyectos -->
-        <div id="portfolioModal" class="modal" aria-hidden="true">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="project-viewer">
-                    <!-- El contenido se cargará dinámicamente -->
-                </div>
+        <!-- Modal para Proyectos -->
+        <div id="portfolioModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="project-viewer">
+                <!-- El contenido se cargará dinámicamente -->
             </div>
         </div>
     </section>
