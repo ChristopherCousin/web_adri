@@ -3,6 +3,7 @@ export const initModals = () => {
     const mainCTA = document.getElementById('mainCTA');
     const secondaryCTA = document.getElementById('secondaryCTA');
     const contactInfoCTA = document.getElementById('contactInfoCTA');
+    const servicesCTA = document.getElementById('servicesCTA');
     const contactModal = document.getElementById('contactModal');
     const closeContactModal = contactModal.querySelector('.close');
 
@@ -16,6 +17,7 @@ export const initModals = () => {
     mainCTA.addEventListener('click', openContactModal);
     secondaryCTA.addEventListener('click', openContactModal);
     contactInfoCTA.addEventListener('click', openContactModal);
+    servicesCTA.addEventListener('click', openContactModal);
 
     // Cerrar Modal de Contacto
     closeContactModal.addEventListener('click', () => {

@@ -1,6 +1,17 @@
 export const initPreloader = () => {
-    window.addEventListener('load', () => {
+    const hidePreloader = () => {
         const preloader = document.getElementById('preloader');
-        preloader.style.display = 'none';
-    });
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    };
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        hidePreloader();
+    } else {
+        document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
+    }
+
+    window.addEventListener('load', hidePreloader, { once: true });
+    setTimeout(hidePreloader, 2500);
 };

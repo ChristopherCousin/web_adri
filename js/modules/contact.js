@@ -1,5 +1,6 @@
 export const initContact = () => {
     const contactForm = document.getElementById('contactForm');
+    const recipientEmail = 'leoganinvest@gmail.com';
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -19,8 +20,12 @@ export const initContact = () => {
         let valid = validateForm(name, email, message);
 
         if(valid) {
-            // Lógica para enviar el formulario
-            alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+            const subject = encodeURIComponent(`Solicitud de presupuesto de ${name}`);
+            const body = encodeURIComponent(
+                `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || 'No indicado'}\n\nMensaje:\n${message}`
+            );
+
+            window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
             contactForm.reset();
             // Cerrar el modal de contacto si está abierto
             const contactModal = document.getElementById('contactModal');

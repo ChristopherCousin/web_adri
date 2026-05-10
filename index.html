@@ -33,6 +33,10 @@
     <header>
         <nav class="navbar">
             <div class="container">
+                <a href="#home" class="brand" aria-label="Logan Invest SL">
+                    <img src="assets/logo.svg" alt="Logan Invest SL">
+                    <span>Logan Invest SL</span>
+                </a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#about">Nosotros</a></li>
@@ -59,9 +63,39 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1>Reformas Integrales en Palma de Mallorca</h1>
-            <p>Especializados en Baños, cocinas, insonorización y reformas integrales en general</p>
-            <a href="#" class="btn" id="mainCTA">Pide tu presupuesto sin compromiso</a>
+            <div class="hero-copy">
+                <span class="hero-kicker">Reformas integrales en Palma de Mallorca</span>
+                <h1>Reformas claras, limpias y bien terminadas.</h1>
+                <p>Transformamos baños, cocinas y viviendas completas con planificación, acabados cuidados y comunicación directa desde el primer presupuesto.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary" id="mainCTA">Pide tu presupuesto</a>
+                    <a href="https://wa.me/34635903415" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp directo</a>
+                </div>
+                <div class="hero-stats" aria-label="Datos destacados">
+                    <div>
+                        <strong>10+</strong>
+                        <span>Años de experiencia</span>
+                    </div>
+                    <div>
+                        <strong>24h</strong>
+                        <span>Disponibilidad</span>
+                    </div>
+                    <div>
+                        <strong>360º</strong>
+                        <span>Gestión integral</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-panel" aria-label="Servicios destacados">
+                <span>Especialistas en</span>
+                <h2>Baños, cocinas y reforma completa</h2>
+                <ul>
+                    <li><i class="fas fa-check"></i> Alicatado, fontanería y electricidad</li>
+                    <li><i class="fas fa-check"></i> Pladur, pintura e insonorización</li>
+                    <li><i class="fas fa-check"></i> Coordinación de obra y acabados</li>
+                </ul>
+                <a href="#services">Ver servicios <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
     </section>
 
@@ -72,8 +106,8 @@
             <h3>Contáctanos</h3>
             <p>Elige la forma que prefieras para comunicarte con nosotros:</p>
             <div class="contact-options">
-                <a href="tel:+34635903415" class="btn"><i class="fas fa-phone-alt"></i> Llámanos</a>
-                <a href="https://wa.me/34635903415" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+4917641265629" class="btn"><i class="fas fa-phone-alt"></i> Llámanos</a>
+                <a href="https://wa.me/34635903415" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Formulario de Contacto</a>
             </div>
         </div>
@@ -82,7 +116,8 @@
     <!-- CTA Secundaria -->
     <section class="cta-secondary">
         <div class="container">
-            <h2>¡Garantizamos los mejores precios del mercado con la máxima calidad!</h2>
+            <span class="section-kicker">Presupuesto sin compromiso</span>
+            <h2>Cuéntanos qué quieres reformar y te orientamos con una propuesta clara.</h2>
             <div class="cta-buttons">
                 <a href="#" class="btn" id="secondaryCTA">Pide tu presupuesto sin compromiso</a>
             </div>
@@ -92,15 +127,25 @@
     <!-- Sobre Nosotros -->
     <section id="about" class="about">
         <div class="container">
-            <h2>Sobre Nosotros</h2>
+            <span class="section-kicker">Sobre Logan Invest SL</span>
+            <h2>Oficio, orden y atención al detalle en cada reforma.</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>En <strong>Logan Invest SL</strong>, nos dedicamos a transformar tus espacios con atención al detalle y excelencia en el servicio. Con más de 10 años de experiencia en el sector de la construcción, ofrecemos soluciones personalizadas en reformas integrales que se ajustan a tus necesidades y presupuesto, garantizando siempre la máxima calidad.</p>
-                    <p>Nuestros servicios abarcan desde alicatados y embaldosados hasta electricidad, fontanería e insonorización, especializándonos en reformas de baños y cocinas.</p>
+                    <p>En <strong>Logan Invest SL</strong>, transformamos viviendas con planificación clara, atención al detalle y un seguimiento cercano de cada fase. Con más de 10 años de experiencia en construcción, diseñamos soluciones de reforma integral adaptadas a tu vivienda, presupuesto y plazos.</p>
+                    <p>Nuestros servicios abarcan desde alicatados y embaldosados hasta electricidad, fontanería e insonorización, con especial foco en baños y cocinas.</p>
+                    <div class="feature-list">
+                        <span><i class="fas fa-check"></i> Presupuesto claro</span>
+                        <span><i class="fas fa-check"></i> Acabados cuidados</span>
+                        <span><i class="fas fa-check"></i> Trato directo</span>
+                    </div>
                     <a href="#contact" class="btn">Contáctanos</a>
                 </div>
                 <div class="about-image">
-                    <img src="assets/about.jpg" alt="Logan Invest SL - Sobre Nosotros">
+                    <img src="assets/logan-about-reforma-realista.png" alt="Reforma integral de vivienda en proceso avanzado">
+                    <div class="about-badge">
+                        <strong>Reforma integral</strong>
+                        <span>Un solo equipo para coordinar toda la obra</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,54 +154,88 @@
     <!-- Servicios -->
     <section id="services" class="services">
         <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <i class="fas fa-hammer service-icon"></i>
-                    <h3>Reformas Integrales</h3>
-                    <p>Transformamos completamente tu espacio con acabados de alta calidad.</p>
+            <div class="services-header">
+                <div>
+                    <span class="section-kicker">Qué hacemos</span>
+                    <h2>Reformas que se entienden antes de empezar.</h2>
                 </div>
-                <div class="service-item">
-                    <i class="fas fa-th-large service-icon"></i>
-                    <h3>Alicatados y Embaldosados</h3>
-                    <p>Especialistas en instalación de azulejos y baldosas para pisos y paredes.</p>
+                <p>Priorizamos los trabajos con mayor impacto en una vivienda: baños, cocinas y reformas integrales. Coordinamos instalaciones, revestimientos y remates para que no tengas que perseguir a cinco gremios distintos.</p>
+            </div>
+
+            <div class="services-showcase">
+                <article class="service-feature service-feature-main">
+                    <img src="assets/portfolio/logan-portfolio-after.png" alt="Baño moderno reformado por Logan Invest SL">
+                    <div>
+                        <span>Servicio principal</span>
+                        <h3>Baños completos</h3>
+                        <p>Distribución, fontanería, electricidad, alicatado, mampara, sanitarios y remates finales.</p>
+                    </div>
+                </article>
+                <article class="service-feature">
+                    <img src="assets/portfolio/logan-cocina-mediterranea.png" alt="Cocina mediterránea reformada con madera natural">
+                    <div>
+                        <span>Alta demanda</span>
+                        <h3>Cocinas a medida</h3>
+                        <p>Espacios funcionales con acabados cálidos, resistentes y fáciles de mantener.</p>
+                    </div>
+                </article>
+                <article class="service-feature">
+                    <img src="assets/logan-about-reforma-realista.png" alt="Vivienda en proceso avanzado de reforma integral">
+                    <div>
+                        <span>Proyecto completo</span>
+                        <h3>Reforma integral</h3>
+                        <p>Planificación de obra, coordinación de gremios y entrega con detalles cuidados.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="services-detail">
+                <div class="services-included">
+                    <h3>También nos encargamos de</h3>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <i class="fas fa-th-large service-icon"></i>
+                            <h4>Alicatados y embaldosados</h4>
+                            <p>Revestimientos bien nivelados, juntas limpias y materiales adecuados para cada estancia.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-plug service-icon"></i>
+                            <h4>Electricidad</h4>
+                            <p>Puntos de luz, mecanismos, previsión de consumos y soluciones integradas en la reforma.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-faucet service-icon"></i>
+                            <h4>Fontanería</h4>
+                            <p>Instalaciones renovadas para baños, cocinas y zonas húmedas con criterio técnico.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-paint-roller service-icon"></i>
+                            <h4>Pintura y alisados</h4>
+                            <p>Paredes preparadas, acabados uniformes y colores que encajan con el espacio.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-archway service-icon"></i>
+                            <h4>Pladur y distribución</h4>
+                            <p>Tabiques, techos, trasdosados y soluciones para ordenar mejor la vivienda.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-headphones service-icon"></i>
+                            <h4>Insonorización</h4>
+                            <p>Mejoras acústicas para ganar confort en dormitorios, salones o locales.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <i class="fas fa-paint-roller service-icon"></i>
-                    <h3>Pintura y Alisados</h3>
-                    <p>Renovamos tus espacios con técnicas avanzadas de pintura y alisado.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-archway service-icon"></i>
-                    <h3>Trabajos de Pladur</h3>
-                    <p>Soluciones en pladur para tabiques, techos y elementos decorativos.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-plug service-icon"></i>
-                    <h3>Electricidad</h3>
-                    <p>Instalaciones eléctricas seguras y eficientes para tu hogar.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-faucet service-icon"></i>
-                    <h3>Fontanería</h3>
-                    <p>Servicios de fontanería para instalaciones nuevas y reparaciones.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-bath service-icon"></i>
-                    <h3>Especialistas en Baños</h3>
-                    <p>Diseño y reforma de baños modernos y funcionales.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-utensils service-icon"></i>
-                    <h3>Especialistas en Cocinas</h3>
-                    <p>Renovación completa de cocinas para adaptarlas a tus necesidades.</p>
-                </div>
-                <!-- Nuevo Servicio: Insonorización -->
-                <div class="service-item">
-                    <i class="fas fa-headphones service-icon"></i>
-                    <h3>Insonorización</h3>
-                    <p>Soluciones de insonorización para mejorar el confort y reducir el ruido en tus espacios.</p>
-                </div>
+
+                <aside class="services-process">
+                    <span class="section-kicker">Método</span>
+                    <h3>De la idea al presupuesto</h3>
+                    <ol>
+                        <li><strong>1</strong><span>Nos cuentas qué quieres reformar y revisamos fotos o medidas.</span></li>
+                        <li><strong>2</strong><span>Definimos alcance, materiales y prioridades reales.</span></li>
+                        <li><strong>3</strong><span>Te damos una propuesta clara para decidir sin vueltas.</span></li>
+                    </ol>
+                    <a href="#" class="btn" id="servicesCTA">Pide tu presupuesto</a>
+                </aside>
             </div>
         </div>
     </section>
@@ -164,38 +243,84 @@
     <!-- Proyectos (Portafolio) -->
     <section id="portfolio" class="portfolio">
         <div class="container">
+            <span class="section-kicker">Antes y después</span>
             <h2>Nuestros Proyectos</h2>
-            <div class="portfolio-grid">
-                <!-- Proyecto 1: Comparación Antes/Después -->
-                <div class="portfolio-item">
-                    <div class="image-compare">
-                        <img src="assets/portfolio/despues.png" alt="Antes" class="before-image">
-                        <img src="assets/portfolio/antes.png" alt="Después" class="after-image">
-                        <div class="slider-line">
-                            <div class="slider-button">
-                                <i class="fas fa-chevron-left"></i>
-                                <i class="fas fa-chevron-right"></i>
+            <p class="section-intro">Casos visuales para comparar estado inicial, decisiones de obra y resultado final. Arrastra la línea central para ver el cambio.</p>
+            <div class="portfolio-grid portfolio-cases">
+                <article class="portfolio-case portfolio-case-featured">
+                    <div class="portfolio-item">
+                        <div class="image-compare">
+                            <img src="assets/portfolio/logan-portfolio-after.png" alt="Baño reformado con acabados modernos" class="before-image">
+                            <img src="assets/portfolio/logan-portfolio-before.png" alt="Baño antiguo antes de la reforma" class="after-image">
+                            <div class="slider-line">
+                                <div class="slider-button">
+                                    <i class="fas fa-chevron-left"></i>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
                             </div>
+                            <span class="label before">Antes</span>
+                            <span class="label after">Después</span>
                         </div>
-                        <span class="label before">Antes</span>
-                        <span class="label after">Después</span>
                     </div>
-                </div>
+                    <div class="portfolio-case-content">
+                        <span>Baño completo</span>
+                        <h3>De baño antiguo a espacio funcional y cálido</h3>
+                        <p>Renovación de instalaciones, revestimientos, ducha, mueble suspendido e iluminación.</p>
+                    </div>
+                </article>
 
-                <!-- Proyecto 2: Comparación Antes/Después -->
-                <div class="portfolio-item">
-                    <div class="image-compare">
-                        <img src="assets/portfolio/despues.png" alt="Antes" class="before-image">
-                        <img src="assets/portfolio/antes.png" alt="Después" class="after-image">
-                        <div class="slider-line">
-                            <div class="slider-button">
-                                <i class="fas fa-chevron-left"></i>
-                                <i class="fas fa-chevron-right"></i>
+                <article class="portfolio-case">
+                    <div class="portfolio-item">
+                        <div class="image-compare">
+                            <img src="assets/portfolio/logan-kitchen-after.png" alt="Cocina reformada con madera natural y luz cálida" class="before-image">
+                            <img src="assets/portfolio/logan-kitchen-before.png" alt="Cocina antigua antes de la reforma" class="after-image">
+                            <div class="slider-line">
+                                <div class="slider-button">
+                                    <i class="fas fa-chevron-left"></i>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
                             </div>
+                            <span class="label before">Antes</span>
+                            <span class="label after">Después</span>
                         </div>
-                        <span class="label before">Antes</span>
-                        <span class="label after">Después</span>
                     </div>
+                    <div class="portfolio-case-content">
+                        <span>Cocina mediterránea</span>
+                        <h3>Más luz, más almacenaje y mejores materiales</h3>
+                        <p>Mobiliario a medida, encimera resistente, iluminación técnica y acabados fáciles de mantener.</p>
+                    </div>
+                </article>
+
+                <article class="portfolio-case">
+                    <div class="portfolio-item">
+                        <div class="image-compare">
+                            <img src="assets/portfolio/logan-living-after.png" alt="Salón reformado con suelo claro y balcones restaurados" class="before-image">
+                            <img src="assets/portfolio/logan-living-before.png" alt="Salón antiguo antes de la reforma integral" class="after-image">
+                            <div class="slider-line">
+                                <div class="slider-button">
+                                    <i class="fas fa-chevron-left"></i>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <span class="label before">Antes</span>
+                            <span class="label after">Después</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-case-content">
+                        <span>Reforma integral</span>
+                        <h3>Una vivienda más luminosa, limpia y actual</h3>
+                        <p>Alisado de paredes, suelo nuevo, techos reparados e integración de iluminación.</p>
+                    </div>
+                </article>
+
+                <div class="portfolio-card portfolio-proof-card">
+                    <h3>Qué se aprecia en un buen antes/después</h3>
+                    <p>No se trata solo de que “se vea bonito”: debe notarse orden de obra, criterio de materiales y remates bien resueltos.</p>
+                    <ul>
+                        <li>Cambio real de distribución o uso</li>
+                        <li>Instalaciones integradas sin improvisaciones</li>
+                        <li>Acabados limpios en encuentros y juntas</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -204,22 +329,20 @@
     <!-- Testimonios -->
     <section id="testimonials" class="testimonials">
         <div class="container">
+            <span class="section-kicker">Clientes</span>
             <h2>Testimonios</h2>
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide testimonial">
-                        <p>"Logan Invest SL transformó mi cocina en un espacio moderno y funcional. Excelente trabajo."</p>
-                        <h4>Andrea Martínez</h4>
-                    </div>
-                    <div class="swiper-slide testimonial">
-                        <p>"La reforma de mi baño superó mis expectativas. Profesionalismo y atención al detalle."</p>
-                        <h4>Luis Fernández</h4>
-                    </div>
-                    <div class="swiper-slide testimonial">
-                        <p>"Contraté sus servicios para una reforma integral y el resultado fue espectacular. Los recomiendo."</p>
-                        <h4>Carmen Gómez</h4>
-                    </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"Logan Invest SL transformó mi cocina en un espacio moderno y funcional. Excelente trabajo."</p>
+                    <h4>Andrea Martínez</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"La reforma de mi baño superó mis expectativas. Profesionalismo y atención al detalle."</p>
+                    <h4>Luis Fernández</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Contraté sus servicios para una reforma integral y el resultado fue espectacular. Los recomiendo."</p>
+                    <h4>Carmen Gómez</h4>
                 </div>
             </div>
         </div>
@@ -228,7 +351,9 @@
     <!-- Contacto -->
     <section id="contact" class="contact">
         <div class="container">
+            <span class="section-kicker">Hablemos de tu reforma</span>
             <h2>Contacto</h2>
+            <p class="section-intro">Envíanos tu idea, medidas aproximadas o fotos del estado actual y te responderemos para orientar el presupuesto.</p>
             <div class="contact-content">
                 <form id="contactForm" novalidate>
                     <div class="form-group">
@@ -256,8 +381,9 @@
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Palma de Mallorca, Islas Baleares</p>
-                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+34635903415">+34 635 90 34 15</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:Loganinvestsl@gmail.com">Loganinvestsl@gmail.com</a></p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+4917641265629">+49 176 41265629</a></p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/34635903415" target="_blank" rel="noopener">WhatsApp directo</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:leoganinvest@gmail.com">leoganinvest@gmail.com</a></p>
                     <p><i class="fas fa-clock"></i> Disponibilidad: 24 horas</p>
                     <div class="contact-buttons">
                         <a href="#" class="btn" id="contactInfoCTA">Pide tu presupuesto sin compromiso</a>

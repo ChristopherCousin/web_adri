@@ -74,8 +74,3 @@ export class Portfolio {
         });
     }
 }
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-    new Portfolio();
-});

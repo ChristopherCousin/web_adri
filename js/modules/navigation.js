@@ -50,7 +50,7 @@ export const initNavigation = () => {
     const smoothLinks = document.querySelectorAll('a[href^="#"]');
     smoothLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            if (link.id === 'mainCTA' || link.id === 'secondaryCTA' || link.id === 'contactInfoCTA') {
+            if (link.id === 'mainCTA' || link.id === 'secondaryCTA' || link.id === 'contactInfoCTA' || link.id === 'servicesCTA') {
                 return;
             }
 
